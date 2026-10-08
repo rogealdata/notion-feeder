@@ -1,0 +1,27 @@
+{
+  "name": "reader",
+  "version": "0.1.0",
+  "description": "Self-hosted read-it-later app for articles, PDFs and EPUBs with highlights.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/server.js",
+    "dev": "node --disable-warning=ExperimentalWarning --watch src/server.js",
+    "test": "node --disable-warning=ExperimentalWarning --test test/*.test.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "dompurify": "^3.4.16",
+    "epubjs": "^0.3.93",
+    "express": "^5.2.1",
+    "jsdom": "^26.1.0",
+    "jszip": "^3.10.2",
+    "multer": "^2.4.0",
+    "pdfjs-dist": "^6.4.299"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

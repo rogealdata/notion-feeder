@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Reader</title>
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/pdf-text-layer.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/vendor/jszip/jszip.min.js" defer></script>
+    <script src="/vendor/epubjs/epub.min.js" defer></script>
+    <script type="module" src="/js/app.js"></script>
+  </head>
+  <body>
+    <div id="app"><div class="loading">Cargando…</div></div>
+    <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+    <div class="dropzone" id="dropzone" hidden><span>Suelta aquí tus PDF y EPUB</span></div>
+  </body>
+</html>
