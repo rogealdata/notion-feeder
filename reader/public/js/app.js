@@ -137,7 +137,17 @@ async function renderSidebar(current) {
 }
 
 function addBar(onAdded) {
-  const input = h('input.field', { type: 'url', id: 'add-url', placeholder: 'Pega un enlace a un artículo, PDF o EPUB…', required: true });
+  const input = h('input.field', {
+    type: 'text',
+    inputmode: 'url',
+    autocomplete: 'off',
+    spellcheck: 'false',
+    id: 'add-url',
+    'aria-label': 'Enlace para guardar',
+    placeholder: 'Pega un enlace a un artículo, PDF o EPUB…',
+  });
+  const errorBox = h('p.add-error', { role: 'alert', hidden: true });
+  input.addEventListener('input', () => (errorBox.hidden = true));
   const saveBtn = h('button.btn.primary', { type: 'submit' }, icon('plus'), 'Guardar');
   const fileInput = h('input', { type: 'file', accept: '.pdf,.epub,application/pdf,application/epub+zip', multiple: true, hidden: true });
   fileInput.addEventListener('change', () => {
@@ -150,7 +160,13 @@ function addBar(onAdded) {
       onSubmit: async (e) => {
         e.preventDefault();
         const url = input.value.trim();
-        if (!url) return;
+        errorBox.hidden = true;
+        if (!url) {
+          errorBox.textContent = 'Pega primero el enlace de la página que quieres guardar.';
+          errorBox.hidden = false;
+          input.focus();
+          return;
+        }
         saveBtn.disabled = true;
         saveBtn.lastChild.textContent = 'Guardando…';
         try {
@@ -159,7 +175,8 @@ function addBar(onAdded) {
           toast(`Guardado: ${doc.title}`);
           onAdded();
         } catch (err) {
-          toast(err.message, { error: true });
+          errorBox.textContent = err.message;
+          errorBox.hidden = false;
         } finally {
           saveBtn.disabled = false;
           saveBtn.lastChild.textContent = 'Guardar';
@@ -170,6 +187,7 @@ function addBar(onAdded) {
     saveBtn,
     h('button.btn', { type: 'button', onClick: () => fileInput.click() }, icon('upload'), 'Subir PDF / EPUB'),
     fileInput,
+    errorBox,
   );
   return form;
 }

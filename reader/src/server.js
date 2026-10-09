@@ -6,7 +6,7 @@ import { writeFile, unlink } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { openDatabase } from './db.js';
-import { extractArticle, fetchUrl } from './extract.js';
+import { extractArticle, fetchUrl, normalizeUrl } from './extract.js';
 import { detectKind, epubMetadata, pdfMetadata } from './files.js';
 import { documentToMarkdown } from './export.js';
 
@@ -197,8 +197,14 @@ export function createApp({ dataDir, fetchImpl } = {}) {
   });
 
   app.post('/api/documents/url', async (req, res) => {
-    const url = String(req.body?.url || '').trim();
-    if (!url) throw new HttpError(400, 'Falta la URL');
+    const raw = String(req.body?.url || '').trim();
+    if (!raw) throw new HttpError(400, 'Pega un enlace para guardarlo.');
+    let url;
+    try {
+      url = normalizeUrl(raw);
+    } catch (err) {
+      throw new HttpError(400, err.message);
+    }
     const existing = findByUrl(url);
     if (existing) return res.status(200).json(serialize(getRow(existing.id)));
 
@@ -206,7 +212,7 @@ export function createApp({ dataDir, fetchImpl } = {}) {
     try {
       fetched = await fetchUrl(url, { fetchImpl });
     } catch (err) {
-      throw new HttpError(422, `No se pudo descargar: ${err.message}`);
+      throw new HttpError(422, err.message);
     }
 
     let id;

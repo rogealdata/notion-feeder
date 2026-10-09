@@ -274,6 +274,15 @@ a {
 .add-bar .field {
   flex: 1 1 260px;
 }
+.add-error {
+  flex-basis: 100%;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--danger) 10%, var(--surface));
+  color: var(--danger);
+  font-size: 14px;
+}
 
 .filters {
   display: flex;
