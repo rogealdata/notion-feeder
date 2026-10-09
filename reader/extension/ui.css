@@ -1,0 +1,100 @@
+/* Same ink-and-highlighter palette as the Reader app. */
+:root {
+  --paper: #f4f5f7;
+  --surface: #ffffff;
+  --ink: #1c2230;
+  --muted: #5b6475;
+  --line: #dde1e8;
+  --accent: #2b4ea2;
+  --accent-soft: #e6ecfa;
+  --good: #2f8f4e;
+  --danger: #b4332b;
+  --hl-yellow: #ffd84d;
+  --font-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-read: Charter, 'Iowan Old Style', Cambria, Georgia, serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #12151b;
+    --surface: #1a1e26;
+    --ink: #e4e7ee;
+    --muted: #a0a8b8;
+    --line: #2a303b;
+    --accent: #93b1ff;
+    --accent-soft: #232c42;
+    --good: #6fd08f;
+    --danger: #ff8a80;
+    color-scheme: dark;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--surface);
+  color: var(--ink);
+  font: 14px/1.45 var(--font-ui);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 15px var(--font-read);
+}
+.brand-mark {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: linear-gradient(transparent 55%, var(--hl-yellow) 55%, var(--hl-yellow) 85%, transparent 85%), var(--accent);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn:hover {
+  border-color: var(--muted);
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
+  font-weight: 600;
+}
+.btn[aria-pressed='true'] {
+  background: var(--accent-soft);
+  border-color: transparent;
+  color: var(--accent);
+  font-weight: 600;
+}
+.field {
+  width: 100%;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+}
+.field:focus,
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+[hidden] {
+  display: none !important;
+}

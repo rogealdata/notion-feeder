@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Guardar en Reader</title>
+    <link rel="stylesheet" href="ui.css" />
+    <style>
+      body {
+        width: 340px;
+        padding: 14px 16px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .state {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .state.ok {
+        color: var(--good);
+      }
+      .state.error {
+        color: var(--danger);
+      }
+      .doc {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        padding-left: 10px;
+        border-left: 3px solid var(--hl-yellow);
+      }
+      .doc-title {
+        font: 600 16px/1.3 var(--font-read);
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .doc-meta {
+        color: var(--muted);
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .message {
+        margin: 0;
+        color: var(--muted);
+      }
+      .footer {
+        display: flex;
+        gap: 8px;
+      }
+      .footer .btn.primary {
+        flex: 1;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="brand"><span class="brand-mark"></span>Reader</div>
+      <span class="state" id="state" role="status">Guardando…</span>
+    </header>
+
+    <div class="doc" id="doc">
+      <div class="doc-title" id="title"></div>
+      <div class="doc-meta" id="meta"></div>
+    </div>
+
+    <section id="saved" hidden>
+      <div class="actions">
+        <button class="btn" type="button" id="later" aria-pressed="false">Después</button>
+        <button class="btn" type="button" id="archive" aria-pressed="false">Archivar</button>
+        <button class="btn" type="button" id="favorite" aria-pressed="false">★ Favorito</button>
+      </div>
+    </section>
+
+    <label id="tags-label" hidden>
+      Etiquetas
+      <input class="field" id="tags" type="text" placeholder="filosofía, trabajo… (Enter para guardar)" />
+    </label>
+
+    <p class="message" id="message" hidden></p>
+
+    <div class="footer">
+      <a class="btn primary" id="open" href="#" target="_blank" hidden>Abrir en Reader</a>
+      <button class="btn" type="button" id="retry" hidden>Reintentar</button>
+      <a class="btn" id="settings" href="options.html" target="_blank">Ajustes</a>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

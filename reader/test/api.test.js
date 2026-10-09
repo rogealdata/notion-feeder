@@ -147,3 +147,38 @@ test('serves the app shell and vendor libraries with a CSP', async () => {
   assert.equal((await fetch(`${srv.base}/vendor/epubjs/epub.min.js`)).status, 200);
   assert.equal((await fetch(`${srv.base}/api/nada`)).status, 404);
 });
+
+test('saves a page sent as HTML by the browser extension', async () => {
+  const url = 'https://members.example.com/post';
+  const headers = { origin: 'chrome-extension://abcdefghijklmnop' };
+  const { status, data } = await srv.request('/api/documents/html', { method: 'POST', headers, json: { url, html: ARTICLE_HTML } });
+  assert.equal(status, 201);
+  assert.equal(data.kind, 'article');
+  assert.equal(data.url, url);
+  assert.match(data.title, /Cómo leer mejor/);
+
+  const full = await srv.request(`/api/documents/${data.id}`);
+  assert.match(full.data.contentHtml, /href="https:\/\/members\.example\.com\/notas"/, 'links resolve against the page URL');
+  assert.doesNotMatch(full.data.contentHtml, /<script/);
+
+  const again = await srv.request('/api/documents/html', { method: 'POST', headers, json: { url, html: ARTICLE_HTML } });
+  assert.equal(again.status, 200);
+  assert.equal(again.data.id, data.id);
+
+  assert.equal((await srv.request('/api/documents/html', { method: 'POST', json: { url: 'javascript:alert(1)', html: 'x' } })).status, 400);
+  assert.equal((await srv.request('/api/documents/html', { method: 'POST', json: { url } })).status, 400, 'html is required');
+  assert.equal((await srv.request('/api/documents/html', { method: 'POST', json: { url: 'https://n.example.com', html: '' } })).status, 400);
+});
+
+test('other websites cannot write to the library', async () => {
+  const evil = { origin: 'https://evil.example.com' };
+  assert.equal((await srv.request('/api/documents/url', { method: 'POST', headers: evil, json: { url: 'https://blog.example.com/leer' } })).status, 403);
+  const form = new FormData();
+  form.append('file', new Blob([minimalPdf()]), 'x.pdf');
+  assert.equal((await srv.request('/api/documents/upload', { method: 'POST', headers: evil, body: form })).status, 403);
+  assert.equal((await srv.request('/api/documents/1', { method: 'DELETE', headers: { origin: 'null' } })).status, 403);
+
+  const sameOrigin = { origin: srv.base };
+  assert.notEqual((await srv.request('/api/documents/html', { method: 'POST', headers: sameOrigin, json: {} })).status, 403);
+  assert.equal((await srv.request('/api/documents', { headers: evil })).status, 200, 'reads are unaffected');
+});

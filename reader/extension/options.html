@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Ajustes · Guardar en Reader</title>
+    <link rel="stylesheet" href="ui.css" />
+    <style>
+      body {
+        background: var(--paper);
+        padding: 40px 16px;
+      }
+      main {
+        max-width: 520px;
+        margin: 0 auto;
+        padding: 24px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      h1 {
+        margin: 0;
+        font: 700 22px var(--font-read);
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+      form {
+        display: flex;
+        gap: 8px;
+      }
+      #status.ok {
+        color: var(--good);
+      }
+      #status.error {
+        color: var(--danger);
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      kbd {
+        font: 12px ui-monospace, Menlo, Consolas, monospace;
+        padding: 1px 5px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="brand"><span class="brand-mark"></span>Guardar en Reader</div>
+      <h1>Dirección de tu Reader</h1>
+      <p>Es la dirección donde abres la app. Si la usas en este ordenador con <code>npm start</code>, déjala como está.</p>
+      <form id="form">
+        <input class="field" id="server" type="url" required placeholder="http://localhost:3000" />
+        <button class="btn primary" type="submit">Guardar y probar</button>
+      </form>
+      <p id="status" role="status"></p>
+      <ul>
+        <li>Clic en el icono de la extensión o <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>: guarda la página actual.</li>
+        <li>Clic derecho en un enlace → <em>Guardar enlace en Reader</em>.</li>
+        <li>Los PDF y EPUB abiertos en el navegador se guardan como archivo.</li>
+      </ul>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

@@ -16,6 +16,7 @@ const MODULES = join(ROOT, 'node_modules');
 const STATUSES = new Set(['inbox', 'later', 'archive']);
 const KINDS = new Set(['article', 'pdf', 'epub']);
 const COLORS = new Set(['yellow', 'green', 'blue', 'pink', 'purple']);
+const EXTENSION_ORIGIN = /^(chrome|moz|safari-web)-extension:\/\//;
 const MIME = { pdf: 'application/pdf', epub: 'application/epub+zip' };
 
 const CSP = [
@@ -55,6 +56,19 @@ export function createApp({ dataDir, fetchImpl } = {}) {
     res.set('Referrer-Policy', 'no-referrer');
     next();
   });
+  // Writes may come from this app's own pages or from the browser extension, never from other websites.
+  app.use('/api', (req, res, next) => {
+    if (req.method === 'GET' || req.method === 'HEAD') return next();
+    const origin = req.get('origin');
+    if (!origin || EXTENSION_ORIGIN.test(origin)) return next();
+    try {
+      if (new URL(origin).host === req.get('host')) return next();
+    } catch {
+      /* malformed origin */
+    }
+    res.status(403).json({ error: 'Origen no permitido' });
+  });
+  app.use('/api/documents/html', express.json({ limit: '20mb' }));
   app.use(express.json({ limit: '1mb' }));
 
   const upload = multer({
@@ -122,6 +136,24 @@ export function createApp({ dataDir, fetchImpl } = {}) {
     return Number(result.lastInsertRowid);
   }
 
+  function storeArticle(html, pageUrl, savedUrl) {
+    let article;
+    try {
+      article = extractArticle(html, pageUrl);
+    } catch (err) {
+      throw new HttpError(422, err.message);
+    }
+    return Number(
+      db
+        .prepare(
+          `INSERT INTO documents (kind, title, author, site_name, url, excerpt, content_html, word_count)
+           VALUES ('article', ?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .run(article.title, article.author, article.siteName, savedUrl, article.excerpt, article.contentHtml, article.wordCount)
+        .lastInsertRowid,
+    );
+  }
+
   function findByUrl(url) {
     return db.prepare('SELECT id FROM documents WHERE url = ?').get(url);
   }
@@ -181,23 +213,20 @@ export function createApp({ dataDir, fetchImpl } = {}) {
     if (fetched.type === 'file') {
       id = await storeFile(fetched.buffer, fetched.filename, url);
     } else {
-      let article;
-      try {
-        article = extractArticle(fetched.html, fetched.url);
-      } catch (err) {
-        throw new HttpError(422, err.message);
-      }
-      id = Number(
-        db
-          .prepare(
-            `INSERT INTO documents (kind, title, author, site_name, url, excerpt, content_html, word_count)
-             VALUES ('article', ?, ?, ?, ?, ?, ?, ?)`,
-          )
-          .run(article.title, article.author, article.siteName, url, article.excerpt, article.contentHtml, article.wordCount)
-          .lastInsertRowid,
-      );
+      id = storeArticle(fetched.html, fetched.url, url);
     }
     res.status(201).json(serialize(getRow(id)));
+  });
+
+  // Used by the browser extension: the page as the reader sees it, including content behind logins.
+  app.post('/api/documents/html', (req, res) => {
+    const url = String(req.body?.url || '').trim();
+    const html = req.body?.html;
+    if (!/^https?:\/\//i.test(url)) throw new HttpError(400, 'Falta una URL http(s) válida');
+    if (typeof html !== 'string' || !html.trim()) throw new HttpError(400, 'Falta el contenido de la página');
+    const existing = findByUrl(url);
+    if (existing) return res.status(200).json(serialize(getRow(existing.id)));
+    res.status(201).json(serialize(getRow(storeArticle(html, url, url))));
   });
 
   app.post('/api/documents/upload', upload.single('file'), async (req, res) => {

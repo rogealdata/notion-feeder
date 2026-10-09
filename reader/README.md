@@ -40,6 +40,27 @@ Variables opcionales:
 
 Para hacer una copia de seguridad basta con copiar la carpeta `data/`.
 
+## Extensión del navegador
+
+La carpeta `extension/` tiene una extensión para **Chrome, Edge, Brave** y otros navegadores basados en Chromium. Sirve para guardar con un clic la página que estás leyendo.
+
+**Instalarla (una sola vez):**
+
+1. Abre `chrome://extensions` (en Edge, `edge://extensions`).
+2. Activa el **Modo de desarrollador**, arriba a la derecha.
+3. Pulsa **Cargar descomprimida** (o "Cargar sin empaquetar") y elige la carpeta `reader/extension`.
+4. Fija el icono en la barra: pulsa el icono de la pieza de puzle y luego la chincheta junto a "Guardar en Reader".
+
+**Usarla** (con la app abierta mediante `npm start`):
+
+- **Clic en el icono** o **Alt+Shift+S**: guarda la página actual. Desde la ventanita puedes moverla a *Después*, archivarla, marcarla como favorita o ponerle etiquetas.
+- **Clic derecho en un enlace** → *Guardar enlace en Reader*: guarda ese enlace sin abrirlo.
+- Los PDF y EPUB abiertos en el navegador se guardan como archivo.
+
+La extensión envía la página tal como la ves tú. Por eso funciona con artículos que solo ves con la sesión iniciada y con webs que cargan el texto con JavaScript.
+
+Si tu Reader no está en `http://localhost:3000`, cambia la dirección en los **Ajustes** de la extensión.
+
 ## Desarrollo
 
 ```bash
@@ -61,6 +82,7 @@ public/
   js/reader.js         lector: barra, panel de subrayados, menú de colores
   js/viewer-*.js       un visor por formato (article, pdf, epub)
 test/                  pruebas de la API
+extension/             extensión del navegador (Manifest V3)
 ```
 
 Cada visor guarda la posición del subrayado de una forma distinta:
@@ -72,7 +94,6 @@ Cada visor guarda la posición del subrayado de una forma distinta:
 ## Próximos pasos posibles
 
 - Suscripción a RSS y newsletters por email.
-- Extensión del navegador para guardar con un clic.
 - Resúmenes y preguntas sobre el documento con IA.
 - Cuentas de usuario y sincronización entre dispositivos.
 - Repaso diario de subrayados (como Readwise).
