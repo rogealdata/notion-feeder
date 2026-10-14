@@ -28,6 +28,8 @@ npm start
 
 Abre <http://localhost:3000>.
 
+**En Windows** también puedes hacer doble clic en `Abrir Reader.bat`: instala lo necesario la primera vez, arranca la app y abre el navegador.
+
 Variables opcionales:
 
 | Variable | Por defecto | Para qué sirve |
