@@ -12,6 +12,12 @@
       "sourceType": "github",
       "skillPath": "skills/cover-letter-generator/SKILL.md",
       "computedHash": "be8edf0952716e813a721f6d097cc8ae4d3562fac0a413138ca993cce8c4b5db"
+    },
+    "cv-builder": {
+      "source": "claude-office-skills/skills",
+      "sourceType": "github",
+      "skillPath": "cv-builder/SKILL.md",
+      "computedHash": "e5de7de7841c4c5d51985f55e56faa7e9df1566bf6288200c1944a56ac017786"
     }
   }
 }
