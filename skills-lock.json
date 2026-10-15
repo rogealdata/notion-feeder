@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "academic-cv-builder": {
+      "source": "paramchoudhary/resumeskills",
+      "sourceType": "github",
+      "skillPath": "skills/academic-cv-builder/SKILL.md",
+      "computedHash": "10dfddb1d7d01fdbec8e965841c1de42b193e5af67d2570f24d3469ece4ded3b"
+    },
     "cover-letter-generator": {
       "source": "paramchoudhary/resumeskills",
       "sourceType": "github",
