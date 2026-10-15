@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "cover-letter-generator": {
+      "source": "paramchoudhary/resumeskills",
+      "sourceType": "github",
+      "skillPath": "skills/cover-letter-generator/SKILL.md",
+      "computedHash": "be8edf0952716e813a721f6d097cc8ae4d3562fac0a413138ca993cce8c4b5db"
+    }
+  }
+}
