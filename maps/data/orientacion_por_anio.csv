@@ -1,0 +1,533 @@
+iso3,anio,lado,confianza,gobierno
+USA,2008,R,alta,Bush (Rep)
+CAN,2008,R,alta,Harper (Cons)
+MEX,2008,R,alta,Calderon (PAN)
+GTM,2008,L,media,Colom (UNE)
+BLZ,2008,R,media,Barrow (UDP)
+HND,2008,L,media,Zelaya (Liberal)
+SLV,2008,R,alta,Saca (ARENA)
+NIC,2008,L,media,"Ortega (FSLN, autoritario)"
+CRI,2008,L,media,Arias (PLN)
+PAN,2008,L,media,Torrijos (PRD)
+CUB,2008,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2008,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2008,R,alta,Uribe/Santos
+ECU,2008,L,alta,Correa/Moreno inicial (AP)
+PER,2008,R,media,Garcia (APRA)
+BOL,2008,L,alta,Morales (MAS)
+CHL,2008,L,alta,Bachelet
+ARG,2008,L,alta,Kirchner/CFK
+URY,2008,L,alta,Vazquez/Mujica (FA)
+PRY,2008,R,alta,Duarte Frutos
+BRA,2008,L,alta,Lula/Dilma (PT)
+GUY,2008,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2008,L,media,Venetiaan (NPS)
+DOM,2008,L,media,L. Fernandez/Medina (PLD)
+HTI,2008,L,media,Preval
+JAM,2008,R,alta,Golding (JLP)
+TTO,2008,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2008,R,alta,Ingraham (FNM)
+USA,2009,L,alta,Obama (Dem)
+CAN,2009,R,alta,Harper (Cons)
+MEX,2009,R,alta,Calderon (PAN)
+GTM,2009,L,media,Colom (UNE)
+BLZ,2009,R,media,Barrow (UDP)
+HND,2009,R,alta,Micheletti/Lobo/Hernandez
+SLV,2009,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2009,L,media,"Ortega (FSLN, autoritario)"
+CRI,2009,L,media,Arias (PLN)
+PAN,2009,R,alta,Martinelli/Varela
+CUB,2009,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2009,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2009,R,alta,Uribe/Santos
+ECU,2009,L,alta,Correa/Moreno inicial (AP)
+PER,2009,R,media,Garcia (APRA)
+BOL,2009,L,alta,Morales (MAS)
+CHL,2009,L,alta,Bachelet
+ARG,2009,L,alta,Kirchner/CFK
+URY,2009,L,alta,Vazquez/Mujica (FA)
+PRY,2009,L,alta,Lugo
+BRA,2009,L,alta,Lula/Dilma (PT)
+GUY,2009,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2009,L,media,Venetiaan (NPS)
+DOM,2009,L,media,L. Fernandez/Medina (PLD)
+HTI,2009,L,media,Preval
+JAM,2009,R,alta,Golding (JLP)
+TTO,2009,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2009,R,alta,Ingraham (FNM)
+USA,2010,L,alta,Obama (Dem)
+CAN,2010,R,alta,Harper (Cons)
+MEX,2010,R,alta,Calderon (PAN)
+GTM,2010,L,media,Colom (UNE)
+BLZ,2010,R,media,Barrow (UDP)
+HND,2010,R,alta,Micheletti/Lobo/Hernandez
+SLV,2010,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2010,L,media,"Ortega (FSLN, autoritario)"
+CRI,2010,R,media,Chinchilla (PLN)
+PAN,2010,R,alta,Martinelli/Varela
+CUB,2010,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2010,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2010,R,alta,Uribe/Santos
+ECU,2010,L,alta,Correa/Moreno inicial (AP)
+PER,2010,R,media,Garcia (APRA)
+BOL,2010,L,alta,Morales (MAS)
+CHL,2010,R,alta,Pinera
+ARG,2010,L,alta,Kirchner/CFK
+URY,2010,L,alta,Vazquez/Mujica (FA)
+PRY,2010,L,alta,Lugo
+BRA,2010,L,alta,Lula/Dilma (PT)
+GUY,2010,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2010,L,media,Venetiaan (NPS)
+DOM,2010,L,media,L. Fernandez/Medina (PLD)
+HTI,2010,L,media,Preval
+JAM,2010,R,alta,Golding (JLP)
+TTO,2010,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2010,R,alta,Ingraham (FNM)
+USA,2011,L,alta,Obama (Dem)
+CAN,2011,R,alta,Harper (Cons)
+MEX,2011,R,alta,Calderon (PAN)
+GTM,2011,L,media,Colom (UNE)
+BLZ,2011,R,media,Barrow (UDP)
+HND,2011,R,alta,Micheletti/Lobo/Hernandez
+SLV,2011,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2011,L,media,"Ortega (FSLN, autoritario)"
+CRI,2011,R,media,Chinchilla (PLN)
+PAN,2011,R,alta,Martinelli/Varela
+CUB,2011,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2011,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2011,R,alta,Uribe/Santos
+ECU,2011,L,alta,Correa/Moreno inicial (AP)
+PER,2011,R,media,Garcia (APRA)
+BOL,2011,L,alta,Morales (MAS)
+CHL,2011,R,alta,Pinera
+ARG,2011,L,alta,Kirchner/CFK
+URY,2011,L,alta,Vazquez/Mujica (FA)
+PRY,2011,L,alta,Lugo
+BRA,2011,L,alta,Lula/Dilma (PT)
+GUY,2011,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2011,L,alta,Bouterse (NDP)
+DOM,2011,L,media,L. Fernandez/Medina (PLD)
+HTI,2011,R,media,Martelly
+JAM,2011,R,alta,Golding (JLP)
+TTO,2011,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2011,R,alta,Ingraham (FNM)
+USA,2012,L,alta,Obama (Dem)
+CAN,2012,R,alta,Harper (Cons)
+MEX,2012,R,alta,Calderon (PAN)
+GTM,2012,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2012,R,media,Barrow (UDP)
+HND,2012,R,alta,Micheletti/Lobo/Hernandez
+SLV,2012,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2012,L,media,"Ortega (FSLN, autoritario)"
+CRI,2012,R,media,Chinchilla (PLN)
+PAN,2012,R,alta,Martinelli/Varela
+CUB,2012,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2012,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2012,R,alta,Uribe/Santos
+ECU,2012,L,alta,Correa/Moreno inicial (AP)
+PER,2012,L,media,Humala
+BOL,2012,L,alta,Morales (MAS)
+CHL,2012,R,alta,Pinera
+ARG,2012,L,alta,Kirchner/CFK
+URY,2012,L,alta,Vazquez/Mujica (FA)
+PRY,2012,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2012,L,alta,Lula/Dilma (PT)
+GUY,2012,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2012,L,alta,Bouterse (NDP)
+DOM,2012,L,media,L. Fernandez/Medina (PLD)
+HTI,2012,R,media,Martelly
+JAM,2012,L,alta,Simpson-Miller (PNP)
+TTO,2012,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2012,L,alta,Christie (PLP)
+USA,2013,L,alta,Obama (Dem)
+CAN,2013,R,alta,Harper (Cons)
+MEX,2013,R,media,Pena Nieto (PRI)
+GTM,2013,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2013,R,media,Barrow (UDP)
+HND,2013,R,alta,Micheletti/Lobo/Hernandez
+SLV,2013,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2013,L,media,"Ortega (FSLN, autoritario)"
+CRI,2013,R,media,Chinchilla (PLN)
+PAN,2013,R,alta,Martinelli/Varela
+CUB,2013,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2013,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2013,R,alta,Uribe/Santos
+ECU,2013,L,alta,Correa/Moreno inicial (AP)
+PER,2013,L,media,Humala
+BOL,2013,L,alta,Morales (MAS)
+CHL,2013,R,alta,Pinera
+ARG,2013,L,alta,Kirchner/CFK
+URY,2013,L,alta,Vazquez/Mujica (FA)
+PRY,2013,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2013,L,alta,Lula/Dilma (PT)
+GUY,2013,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2013,L,alta,Bouterse (NDP)
+DOM,2013,L,media,L. Fernandez/Medina (PLD)
+HTI,2013,R,media,Martelly
+JAM,2013,L,alta,Simpson-Miller (PNP)
+TTO,2013,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2013,L,alta,Christie (PLP)
+USA,2014,L,alta,Obama (Dem)
+CAN,2014,R,alta,Harper (Cons)
+MEX,2014,R,media,Pena Nieto (PRI)
+GTM,2014,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2014,R,media,Barrow (UDP)
+HND,2014,R,alta,Micheletti/Lobo/Hernandez
+SLV,2014,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2014,L,media,"Ortega (FSLN, autoritario)"
+CRI,2014,L,alta,Solis/Alvarado (PAC)
+PAN,2014,R,alta,Martinelli/Varela
+CUB,2014,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2014,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2014,R,alta,Uribe/Santos
+ECU,2014,L,alta,Correa/Moreno inicial (AP)
+PER,2014,L,media,Humala
+BOL,2014,L,alta,Morales (MAS)
+CHL,2014,L,alta,Bachelet
+ARG,2014,L,alta,Kirchner/CFK
+URY,2014,L,alta,Vazquez/Mujica (FA)
+PRY,2014,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2014,L,alta,Lula/Dilma (PT)
+GUY,2014,L,media,Jagdeo/Ramotar (PPP/C)
+SUR,2014,L,alta,Bouterse (NDP)
+DOM,2014,L,media,L. Fernandez/Medina (PLD)
+HTI,2014,R,media,Martelly
+JAM,2014,L,alta,Simpson-Miller (PNP)
+TTO,2014,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2014,L,alta,Christie (PLP)
+USA,2015,L,alta,Obama (Dem)
+CAN,2015,R,alta,Harper (Cons)
+MEX,2015,R,media,Pena Nieto (PRI)
+GTM,2015,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2015,R,media,Barrow (UDP)
+HND,2015,R,alta,Micheletti/Lobo/Hernandez
+SLV,2015,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2015,L,media,"Ortega (FSLN, autoritario)"
+CRI,2015,L,alta,Solis/Alvarado (PAC)
+PAN,2015,R,alta,Martinelli/Varela
+CUB,2015,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2015,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2015,R,alta,Uribe/Santos
+ECU,2015,L,alta,Correa/Moreno inicial (AP)
+PER,2015,L,media,Humala
+BOL,2015,L,alta,Morales (MAS)
+CHL,2015,L,alta,Bachelet
+ARG,2015,L,alta,Kirchner/CFK
+URY,2015,L,alta,Vazquez/Mujica (FA)
+PRY,2015,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2015,L,alta,Lula/Dilma (PT)
+GUY,2015,R,media,Granger (APNU)
+SUR,2015,L,alta,Bouterse (NDP)
+DOM,2015,L,media,L. Fernandez/Medina (PLD)
+HTI,2015,R,media,Martelly
+JAM,2015,L,alta,Simpson-Miller (PNP)
+TTO,2015,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2015,L,alta,Christie (PLP)
+USA,2016,L,alta,Obama (Dem)
+CAN,2016,L,media,Trudeau/Carney (Liberal)
+MEX,2016,R,media,Pena Nieto (PRI)
+GTM,2016,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2016,R,media,Barrow (UDP)
+HND,2016,R,alta,Micheletti/Lobo/Hernandez
+SLV,2016,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2016,L,media,"Ortega (FSLN, autoritario)"
+CRI,2016,L,alta,Solis/Alvarado (PAC)
+PAN,2016,R,alta,Martinelli/Varela
+CUB,2016,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2016,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2016,R,alta,Uribe/Santos
+ECU,2016,L,alta,Correa/Moreno inicial (AP)
+PER,2016,L,media,Humala
+BOL,2016,L,alta,Morales (MAS)
+CHL,2016,L,alta,Bachelet
+ARG,2016,R,alta,Macri
+URY,2016,L,alta,Vazquez/Mujica (FA)
+PRY,2016,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2016,L,alta,Lula/Dilma (PT)
+GUY,2016,R,media,Granger (APNU)
+SUR,2016,L,alta,Bouterse (NDP)
+DOM,2016,L,media,L. Fernandez/Medina (PLD)
+HTI,2016,X,media,Privert (interino)
+JAM,2016,R,alta,Holness (JLP)
+TTO,2016,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2016,L,alta,Christie (PLP)
+USA,2017,R,alta,Trump (Rep)
+CAN,2017,L,media,Trudeau/Carney (Liberal)
+MEX,2017,R,media,Pena Nieto (PRI)
+GTM,2017,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2017,R,media,Barrow (UDP)
+HND,2017,R,alta,Micheletti/Lobo/Hernandez
+SLV,2017,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2017,L,media,"Ortega (FSLN, autoritario)"
+CRI,2017,L,alta,Solis/Alvarado (PAC)
+PAN,2017,R,alta,Martinelli/Varela
+CUB,2017,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2017,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2017,R,alta,Uribe/Santos
+ECU,2017,L,alta,Correa/Moreno inicial (AP)
+PER,2017,R,media,PPK/Vizcarra/Merino
+BOL,2017,L,alta,Morales (MAS)
+CHL,2017,L,alta,Bachelet
+ARG,2017,R,alta,Macri
+URY,2017,L,alta,Vazquez/Mujica (FA)
+PRY,2017,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2017,R,alta,Temer/Bolsonaro
+GUY,2017,R,media,Granger (APNU)
+SUR,2017,L,alta,Bouterse (NDP)
+DOM,2017,L,media,L. Fernandez/Medina (PLD)
+HTI,2017,R,media,Moise/Henry
+JAM,2017,R,alta,Holness (JLP)
+TTO,2017,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2017,R,alta,Minnis (FNM)
+USA,2018,R,alta,Trump (Rep)
+CAN,2018,L,media,Trudeau/Carney (Liberal)
+MEX,2018,R,media,Pena Nieto (PRI)
+GTM,2018,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2018,R,media,Barrow (UDP)
+HND,2018,R,alta,Micheletti/Lobo/Hernandez
+SLV,2018,L,alta,Funes/Sanchez Ceren (FMLN)
+NIC,2018,L,media,"Ortega (FSLN, autoritario)"
+CRI,2018,L,alta,Solis/Alvarado (PAC)
+PAN,2018,R,alta,Martinelli/Varela
+CUB,2018,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2018,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2018,R,alta,Uribe/Santos
+ECU,2018,R,alta,Moreno/Lasso/Noboa
+PER,2018,R,media,PPK/Vizcarra/Merino
+BOL,2018,L,alta,Morales (MAS)
+CHL,2018,R,alta,Pinera
+ARG,2018,R,alta,Macri
+URY,2018,L,alta,Vazquez/Mujica (FA)
+PRY,2018,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2018,R,alta,Temer/Bolsonaro
+GUY,2018,R,media,Granger (APNU)
+SUR,2018,L,alta,Bouterse (NDP)
+DOM,2018,L,media,L. Fernandez/Medina (PLD)
+HTI,2018,R,media,Moise/Henry
+JAM,2018,R,alta,Holness (JLP)
+TTO,2018,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2018,R,alta,Minnis (FNM)
+USA,2019,R,alta,Trump (Rep)
+CAN,2019,L,media,Trudeau/Carney (Liberal)
+MEX,2019,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2019,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2019,R,media,Barrow (UDP)
+HND,2019,R,alta,Micheletti/Lobo/Hernandez
+SLV,2019,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2019,L,media,"Ortega (FSLN, autoritario)"
+CRI,2019,L,alta,Solis/Alvarado (PAC)
+PAN,2019,L,media,Cortizo (PRD)
+CUB,2019,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2019,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2019,R,alta,Duque
+ECU,2019,R,alta,Moreno/Lasso/Noboa
+PER,2019,R,media,PPK/Vizcarra/Merino
+BOL,2019,L,alta,Morales (MAS)
+CHL,2019,R,alta,Pinera
+ARG,2019,R,alta,Macri
+URY,2019,L,alta,Vazquez/Mujica (FA)
+PRY,2019,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2019,R,alta,Temer/Bolsonaro
+GUY,2019,R,media,Granger (APNU)
+SUR,2019,L,alta,Bouterse (NDP)
+DOM,2019,L,media,L. Fernandez/Medina (PLD)
+HTI,2019,R,media,Moise/Henry
+JAM,2019,R,alta,Holness (JLP)
+TTO,2019,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2019,R,alta,Minnis (FNM)
+USA,2020,R,alta,Trump (Rep)
+CAN,2020,L,media,Trudeau/Carney (Liberal)
+MEX,2020,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2020,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2020,R,media,Barrow (UDP)
+HND,2020,R,alta,Micheletti/Lobo/Hernandez
+SLV,2020,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2020,L,media,"Ortega (FSLN, autoritario)"
+CRI,2020,L,alta,Solis/Alvarado (PAC)
+PAN,2020,L,media,Cortizo (PRD)
+CUB,2020,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2020,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2020,R,alta,Duque
+ECU,2020,R,alta,Moreno/Lasso/Noboa
+PER,2020,R,media,PPK/Vizcarra/Merino
+BOL,2020,R,alta,Anez
+CHL,2020,R,alta,Pinera
+ARG,2020,L,alta,A. Fernandez
+URY,2020,R,alta,Lacalle Pou
+PRY,2020,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2020,R,alta,Temer/Bolsonaro
+GUY,2020,R,media,Granger (APNU)
+SUR,2020,L,alta,Bouterse (NDP)
+DOM,2020,L,media,L. Fernandez/Medina (PLD)
+HTI,2020,R,media,Moise/Henry
+JAM,2020,R,alta,Holness (JLP)
+TTO,2020,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2020,R,alta,Minnis (FNM)
+USA,2021,L,alta,Biden (Dem)
+CAN,2021,L,media,Trudeau/Carney (Liberal)
+MEX,2021,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2021,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2021,L,media,Briceno (PUP)
+HND,2021,R,alta,Micheletti/Lobo/Hernandez
+SLV,2021,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2021,L,media,"Ortega (FSLN, autoritario)"
+CRI,2021,L,alta,Solis/Alvarado (PAC)
+PAN,2021,L,media,Cortizo (PRD)
+CUB,2021,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2021,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2021,R,alta,Duque
+ECU,2021,R,alta,Moreno/Lasso/Noboa
+PER,2021,L,media,Sagasti (interino)
+BOL,2021,L,alta,Arce (MAS)
+CHL,2021,R,alta,Pinera
+ARG,2021,L,alta,A. Fernandez
+URY,2021,R,alta,Lacalle Pou
+PRY,2021,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2021,R,alta,Temer/Bolsonaro
+GUY,2021,L,media,Ali (PPP/C)
+SUR,2021,R,media,Santokhi (VHP)
+DOM,2021,R,media,Abinader (PRM)
+HTI,2021,R,media,Moise/Henry
+JAM,2021,R,alta,Holness (JLP)
+TTO,2021,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2021,R,alta,Minnis (FNM)
+USA,2022,L,alta,Biden (Dem)
+CAN,2022,L,media,Trudeau/Carney (Liberal)
+MEX,2022,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2022,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2022,L,media,Briceno (PUP)
+HND,2022,L,alta,X. Castro (Libre)
+SLV,2022,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2022,L,media,"Ortega (FSLN, autoritario)"
+CRI,2022,R,alta,Chaves/L. Fernandez
+PAN,2022,L,media,Cortizo (PRD)
+CUB,2022,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2022,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2022,R,alta,Duque
+ECU,2022,R,alta,Moreno/Lasso/Noboa
+PER,2022,L,alta,Castillo
+BOL,2022,L,alta,Arce (MAS)
+CHL,2022,L,alta,Boric
+ARG,2022,L,alta,A. Fernandez
+URY,2022,R,alta,Lacalle Pou
+PRY,2022,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2022,R,alta,Temer/Bolsonaro
+GUY,2022,L,media,Ali (PPP/C)
+SUR,2022,R,media,Santokhi (VHP)
+DOM,2022,R,media,Abinader (PRM)
+HTI,2022,R,media,Moise/Henry
+JAM,2022,R,alta,Holness (JLP)
+TTO,2022,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2022,L,alta,Davis (PLP)
+USA,2023,L,alta,Biden (Dem)
+CAN,2023,L,media,Trudeau/Carney (Liberal)
+MEX,2023,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2023,R,alta,Perez Molina/Morales/Giammattei
+BLZ,2023,L,media,Briceno (PUP)
+HND,2023,L,alta,X. Castro (Libre)
+SLV,2023,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2023,L,media,"Ortega (FSLN, autoritario)"
+CRI,2023,R,alta,Chaves/L. Fernandez
+PAN,2023,L,media,Cortizo (PRD)
+CUB,2023,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2023,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2023,L,alta,Petro
+ECU,2023,R,alta,Moreno/Lasso/Noboa
+PER,2023,R,media,Boluarte/Jeri
+BOL,2023,L,alta,Arce (MAS)
+CHL,2023,L,alta,Boric
+ARG,2023,L,alta,A. Fernandez
+URY,2023,R,alta,Lacalle Pou
+PRY,2023,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2023,L,alta,Lula (PT)
+GUY,2023,L,media,Ali (PPP/C)
+SUR,2023,R,media,Santokhi (VHP)
+DOM,2023,R,media,Abinader (PRM)
+HTI,2023,R,media,Moise/Henry
+JAM,2023,R,alta,Holness (JLP)
+TTO,2023,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2023,L,alta,Davis (PLP)
+USA,2024,L,alta,Biden (Dem)
+CAN,2024,L,media,Trudeau/Carney (Liberal)
+MEX,2024,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2024,L,media,Arevalo (Semilla)
+BLZ,2024,L,media,Briceno (PUP)
+HND,2024,L,alta,X. Castro (Libre)
+SLV,2024,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2024,L,media,"Ortega (FSLN, autoritario)"
+CRI,2024,R,alta,Chaves/L. Fernandez
+PAN,2024,R,alta,Mulino
+CUB,2024,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2024,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2024,L,alta,Petro
+ECU,2024,R,alta,Moreno/Lasso/Noboa
+PER,2024,R,media,Boluarte/Jeri
+BOL,2024,L,alta,Arce (MAS)
+CHL,2024,L,alta,Boric
+ARG,2024,R,alta,Milei
+URY,2024,R,alta,Lacalle Pou
+PRY,2024,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2024,L,alta,Lula (PT)
+GUY,2024,L,media,Ali (PPP/C)
+SUR,2024,R,media,Santokhi (VHP)
+DOM,2024,R,media,Abinader (PRM)
+HTI,2024,X,alta,Consejo de transicion
+JAM,2024,R,alta,Holness (JLP)
+TTO,2024,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2024,L,alta,Davis (PLP)
+USA,2025,R,alta,Trump (Rep)
+CAN,2025,L,media,Trudeau/Carney (Liberal)
+MEX,2025,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2025,L,media,Arevalo (Semilla)
+BLZ,2025,L,media,Briceno (PUP)
+HND,2025,L,alta,X. Castro (Libre)
+SLV,2025,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2025,L,media,"Ortega (FSLN, autoritario)"
+CRI,2025,R,alta,Chaves/L. Fernandez
+PAN,2025,R,alta,Mulino
+CUB,2025,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2025,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2025,L,alta,Petro
+ECU,2025,R,alta,Moreno/Lasso/Noboa
+PER,2025,R,media,Boluarte/Jeri
+BOL,2025,L,alta,Arce (MAS)
+CHL,2025,L,alta,Boric
+ARG,2025,R,alta,Milei
+URY,2025,L,alta,Orsi (FA)
+PRY,2025,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2025,L,alta,Lula (PT)
+GUY,2025,L,media,Ali (PPP/C)
+SUR,2025,R,media,Santokhi (VHP)
+DOM,2025,R,media,Abinader (PRM)
+HTI,2025,X,alta,Consejo de transicion
+JAM,2025,R,alta,Holness (JLP)
+TTO,2025,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2025,L,alta,Davis (PLP)
+USA,2026,R,alta,Trump (Rep)
+CAN,2026,L,media,Trudeau/Carney (Liberal)
+MEX,2026,L,alta,AMLO/Sheinbaum (Morena)
+GTM,2026,L,media,Arevalo (Semilla)
+BLZ,2026,L,media,Briceno (PUP)
+HND,2026,R,alta,Asfura (PN)
+SLV,2026,R,media,"Bukele (Nuevas Ideas, securitario)"
+NIC,2026,L,media,"Ortega (FSLN, autoritario)"
+CRI,2026,R,alta,Chaves/L. Fernandez
+PAN,2026,R,alta,Mulino
+CUB,2026,L,alta,Castro/Diaz-Canel (PCC)
+VEN,2026,L,alta,Chavez/Maduro/D. Rodriguez (chavismo)
+COL,2026,L,alta,Petro
+ECU,2026,R,alta,Moreno/Lasso/Noboa
+PER,2026,L,media,"Balcazar (interino, Peru Libre)"
+BOL,2026,R,media,Paz (PDC)
+CHL,2026,R,alta,Kast
+ARG,2026,R,alta,Milei
+URY,2026,L,alta,Orsi (FA)
+PRY,2026,R,alta,Franco/Cartes/Abdo/Pena
+BRA,2026,L,alta,Lula (PT)
+GUY,2026,L,media,Ali (PPP/C)
+SUR,2026,L,media,Simons (NDP)
+DOM,2026,R,media,Abinader (PRM)
+HTI,2026,X,alta,Consejo de transicion
+JAM,2026,R,alta,Holness (JLP)
+TTO,2026,X,media,Alternancia PNM/UNC (partidos etnicos)
+BHS,2026,L,alta,Davis (PLP)

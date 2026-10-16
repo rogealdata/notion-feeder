@@ -1,0 +1,36 @@
+# (iso3, inicio, fin, lado, confianza, presidente/partido)
+# lado: L=izquierda/progresista, R=derecha/securitaria, X=no clasificable
+# confianza: alta/media (media = centro, giro ideologico o clasificacion discutible)
+Z = "2008-01-01"; F = "2099-01-01"
+T = [
+("USA",Z,"2009-01-20","R","alta","Bush (Rep)"),("USA","2009-01-20","2017-01-20","L","alta","Obama (Dem)"),
+("USA","2017-01-20","2021-01-20","R","alta","Trump (Rep)"),("USA","2021-01-20","2025-01-20","L","alta","Biden (Dem)"),("USA","2025-01-20",F,"R","alta","Trump (Rep)"),
+("CAN",Z,"2015-11-04","R","alta","Harper (Cons)"),("CAN","2015-11-04",F,"L","media","Trudeau/Carney (Liberal)"),
+("MEX",Z,"2012-12-01","R","alta","Calderon (PAN)"),("MEX","2012-12-01","2018-12-01","R","media","Pena Nieto (PRI)"),("MEX","2018-12-01",F,"L","alta","AMLO/Sheinbaum (Morena)"),
+("GTM",Z,"2012-01-14","L","media","Colom (UNE)"),("GTM","2012-01-14","2024-01-14","R","alta","Perez Molina/Morales/Giammattei"),("GTM","2024-01-14",F,"L","media","Arevalo (Semilla)"),
+("BLZ",Z,"2020-11-12","R","media","Barrow (UDP)"),("BLZ","2020-11-12",F,"L","media","Briceno (PUP)"),
+("HND",Z,"2009-06-28","L","media","Zelaya (Liberal)"),("HND","2009-06-28","2022-01-27","R","alta","Micheletti/Lobo/Hernandez"),("HND","2022-01-27","2026-01-27","L","alta","X. Castro (Libre)"),("HND","2026-01-27",F,"R","alta","Asfura (PN)"),
+("SLV",Z,"2009-06-01","R","alta","Saca (ARENA)"),("SLV","2009-06-01","2019-06-01","L","alta","Funes/Sanchez Ceren (FMLN)"),("SLV","2019-06-01",F,"R","media","Bukele (Nuevas Ideas, securitario)"),
+("NIC",Z,F,"L","media","Ortega (FSLN, autoritario)"),
+("CRI",Z,"2010-05-08","L","media","Arias (PLN)"),("CRI","2010-05-08","2014-05-08","R","media","Chinchilla (PLN)"),("CRI","2014-05-08","2022-05-08","L","alta","Solis/Alvarado (PAC)"),("CRI","2022-05-08",F,"R","alta","Chaves/L. Fernandez"),
+("PAN",Z,"2009-07-01","L","media","Torrijos (PRD)"),("PAN","2009-07-01","2019-07-01","R","alta","Martinelli/Varela"),("PAN","2019-07-01","2024-07-01","L","media","Cortizo (PRD)"),("PAN","2024-07-01",F,"R","alta","Mulino"),
+("CUB",Z,F,"L","alta","Castro/Diaz-Canel (PCC)"),
+("VEN",Z,F,"L","alta","Chavez/Maduro/D. Rodriguez (chavismo)"),
+("COL",Z,"2018-08-07","R","alta","Uribe/Santos"),("COL","2018-08-07","2022-08-07","R","alta","Duque"),("COL","2022-08-07","2026-08-07","L","alta","Petro"),("COL","2026-08-07",F,"R","alta","De la Espriella"),
+("ECU",Z,"2018-02-04","L","alta","Correa/Moreno inicial (AP)"),("ECU","2018-02-04",F,"R","alta","Moreno/Lasso/Noboa"),
+("PER",Z,"2011-07-28","R","media","Garcia (APRA)"),("PER","2011-07-28","2016-07-28","L","media","Humala"),("PER","2016-07-28","2020-11-17","R","media","PPK/Vizcarra/Merino"),("PER","2020-11-17","2021-07-28","L","media","Sagasti (interino)"),
+("PER","2021-07-28","2022-12-07","L","alta","Castillo"),("PER","2022-12-07","2026-02-18","R","media","Boluarte/Jeri"),("PER","2026-02-18","2026-07-28","L","media","Balcazar (interino, Peru Libre)"),("PER","2026-07-28",F,"R","alta","K. Fujimori"),
+("BOL",Z,"2019-11-12","L","alta","Morales (MAS)"),("BOL","2019-11-12","2020-11-08","R","alta","Anez"),("BOL","2020-11-08","2025-11-08","L","alta","Arce (MAS)"),("BOL","2025-11-08",F,"R","media","Paz (PDC)"),
+("CHL",Z,"2010-03-11","L","alta","Bachelet"),("CHL","2010-03-11","2014-03-11","R","alta","Pinera"),("CHL","2014-03-11","2018-03-11","L","alta","Bachelet"),("CHL","2018-03-11","2022-03-11","R","alta","Pinera"),("CHL","2022-03-11","2026-03-11","L","alta","Boric"),("CHL","2026-03-11",F,"R","alta","Kast"),
+("ARG",Z,"2015-12-10","L","alta","Kirchner/CFK"),("ARG","2015-12-10","2019-12-10","R","alta","Macri"),("ARG","2019-12-10","2023-12-10","L","alta","A. Fernandez"),("ARG","2023-12-10",F,"R","alta","Milei"),
+("URY",Z,"2020-03-01","L","alta","Vazquez/Mujica (FA)"),("URY","2020-03-01","2025-03-01","R","alta","Lacalle Pou"),("URY","2025-03-01",F,"L","alta","Orsi (FA)"),
+("PRY",Z,"2008-08-15","R","alta","Duarte Frutos"),("PRY","2008-08-15","2012-06-22","L","alta","Lugo"),("PRY","2012-06-22",F,"R","alta","Franco/Cartes/Abdo/Pena"),
+("BRA",Z,"2016-08-31","L","alta","Lula/Dilma (PT)"),("BRA","2016-08-31","2023-01-01","R","alta","Temer/Bolsonaro"),("BRA","2023-01-01",F,"L","alta","Lula (PT)"),
+("GUY",Z,"2015-05-16","L","media","Jagdeo/Ramotar (PPP/C)"),("GUY","2015-05-16","2020-08-02","R","media","Granger (APNU)"),("GUY","2020-08-02",F,"L","media","Ali (PPP/C)"),
+("SUR",Z,"2010-08-12","L","media","Venetiaan (NPS)"),("SUR","2010-08-12","2020-07-16","L","alta","Bouterse (NDP)"),("SUR","2020-07-16","2025-07-16","R","media","Santokhi (VHP)"),("SUR","2025-07-16",F,"L","media","Simons (NDP)"),
+("DOM",Z,"2020-08-16","L","media","L. Fernandez/Medina (PLD)"),("DOM","2020-08-16",F,"R","media","Abinader (PRM)"),
+("HTI",Z,"2011-05-14","L","media","Preval"),("HTI","2011-05-14","2016-02-14","R","media","Martelly"),("HTI","2016-02-14","2017-02-07","X","media","Privert (interino)"),("HTI","2017-02-07","2024-04-25","R","media","Moise/Henry"),("HTI","2024-04-25",F,"X","alta","Consejo de transicion"),
+("JAM",Z,"2012-01-05","R","alta","Golding (JLP)"),("JAM","2012-01-05","2016-03-03","L","alta","Simpson-Miller (PNP)"),("JAM","2016-03-03",F,"R","alta","Holness (JLP)"),
+("TTO",Z,F,"X","media","Alternancia PNM/UNC (partidos etnicos)"),
+("BHS",Z,"2012-05-08","R","alta","Ingraham (FNM)"),("BHS","2012-05-08","2017-05-11","L","alta","Christie (PLP)"),("BHS","2017-05-11","2021-09-16","R","alta","Minnis (FNM)"),("BHS","2021-09-16",F,"L","alta","Davis (PLP)"),
+]
