@@ -129,3 +129,123 @@ def test_pipeline_report_and_overrides(tmp_path):
     ov = tmp_path / "rev.csv"
     ov.write_text("url,postura,nota\nhttps://www.ejemplo.mx/nota-2/,en_contra,x\nhttps://a.b,otra,y\n", encoding="utf-8")
     assert load_overrides(ov) == {"https://ejemplo.mx/nota-2": "en_contra"}
+
+
+# ---------- sitemaps y Google Sheets (sin red) ----------
+from agua_gdl.collect import discover_sitemap, parse_sitemap  # noqa: E402
+from agua_gdl.config import compile_patterns  # noqa: E402
+from agua_gdl import sheets  # noqa: E402
+
+SITEMAP_INDEX = b"""<?xml version="1.0"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<sitemap><loc>https://ej.mx/sm-2025-06.xml</loc><lastmod>2025-06-30</lastmod></sitemap>
+<sitemap><loc>https://ej.mx/sm-2019-01.xml</loc><lastmod>2019-01-31</lastmod></sitemap></sitemapindex>"""
+NEWS_SITEMAP = b"""<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+ xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+<url><loc>https://ej.mx/a/1</loc><news:news><news:publication_date>2025-06-10T08:00:00-06:00</news:publication_date>
+<news:title>Colonias de Zapopan sin agua</news:title></news:news></url>
+<url><loc>https://ej.mx/deportes/gol-del-domingo</loc><lastmod>2025-06-11</lastmod></url>
+<url><loc>https://ej.mx/jalisco/crisis-del-agua-en-guadalajara</loc><lastmod>2025-06-12</lastmod></url>
+<url><loc>https://ej.mx/jalisco/agua-vieja</loc><lastmod>2020-01-01</lastmod></url></urlset>"""
+
+
+def test_parse_sitemap():
+    assert parse_sitemap(SITEMAP_INDEX)[0] == "index"
+    kind, entries = parse_sitemap(NEWS_SITEMAP)
+    assert kind == "urlset" and entries[0]["title"] == "Colonias de Zapopan sin agua"
+    assert entries[0]["lastmod"].startswith("2025-06-10")
+
+
+def test_discover_sitemap_filters_by_date_and_water():
+    class FakeResp:
+        def __init__(self, content):
+            self.content, self.text = content, content.decode()
+
+    class FakeClient:
+        def __init__(self):
+            self.asked = []
+
+        def get(self, url, check_robots=True):
+            self.asked.append(url)
+            if url.endswith("robots.txt"):
+                return FakeResp(b"Sitemap: https://ej.mx/index.xml")
+            if url.endswith("index.xml"):
+                return FakeResp(SITEMAP_INDEX)
+            if "2025-06" in url:
+                return FakeResp(NEWS_SITEMAP)
+            raise RuntimeError("404")
+
+    client = FakeClient()
+    water = compile_patterns(Config().keywords["agua"])
+    found = discover_sitemap(client, {"domain": "ej.mx"}, "2025-01-01", water)
+    urls = {f["link"] for f in found}
+    assert urls == {"https://ej.mx/a/1", "https://ej.mx/jalisco/crisis-del-agua-en-guadalajara"}
+    assert not any("2019" in u for u in client.asked)  # no baja sitemaps viejos
+
+
+class WorksheetNotFound(Exception):
+    pass
+
+
+class FakeWS:
+    def __init__(self, title):
+        self.title, self.values = title, []
+
+    def get_all_values(self):
+        return self.values
+
+    def clear(self):
+        self.values = []
+
+    def resize(self, rows, cols):
+        pass
+
+    def update(self, range_name, values, value_input_option=None):
+        assert value_input_option == "RAW"
+        start = int(range_name[1:]) - 1
+        self.values[start:start + len(values)] = [list(map(str, r)) for r in values]
+
+
+class FakeSheet:
+    def __init__(self):
+        self.tabs = {}
+
+    def worksheet(self, title):
+        if title not in self.tabs:
+            raise WorksheetNotFound(title)
+        return self.tabs[title]
+
+    def add_worksheet(self, title, rows, cols):
+        self.tabs[title] = FakeWS(title)
+        return self.tabs[title]
+
+
+def test_sheets_roundtrip(tmp_path):
+    cfg = Config()
+    sh = FakeSheet()
+    sheets.seed_config(sh, cfg)
+    assert {"Medios", "Busquedas", "Revision"} <= set(sh.tabs)
+    # el usuario apaga un medio y limita el número
+    medios = sh.tabs["Medios"].values
+    medios[1][-1] = "no"
+    cfg2 = sheets.apply_config(sh, Config(), max_medios=3)
+    assert len(cfg2.sources) == 3 and medios[1][0] not in {s["id"] for s in cfg2.sources}
+    assert cfg2.sources[0]["rss"] is not None
+    # revisión manual desde la hoja
+    sh.tabs["Revision"].values = [["url", "postura", "nota"], ["https://ejemplo.mx/n/", "a_favor", ""]]
+    assert sheets.read_overrides(sh) == {"https://ejemplo.mx/n": "a_favor"}
+    # exportación
+    an = Analyzer(cfg)
+    db = DB(str(tmp_path / "s.db"))
+    src = {"id": "l", "name": "Medio Local", "scope": "local"}
+    for i, (t, x) in enumerate([CRITICA, FAVOR]):
+        u = f"https://ejemplo.mx/n{i}"
+        db.add_candidate(u, canonical_url(u), src, t, "", "2025-06-01", "manual")
+        rid = db.con.execute("select id from articles where url=?", (u,)).fetchone()["id"]
+        db.save_download(rid, t, "", x, False)
+    for r in db.to_analyze():
+        db.save_analysis(r["id"], an.analyze(r["title"], r["text"]))
+    res = sheets.export(sh, db, cfg.themes)
+    assert res["notas"] == 2
+    assert sh.tabs["En contra"].values[1][1] == "Medio Local" and len(sh.tabs["A favor"].values) == 2
+    assert sh.tabs["Resumen"].values[0] == ["Notas relevantes", "2"]
+    assert any(r[0].startswith("Desabasto") for r in sh.tabs["Críticas por tema"].values[1:])

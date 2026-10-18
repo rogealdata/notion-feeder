@@ -23,9 +23,20 @@ Salidas en `data/reporte/`: `reporte.html` (con filtros por medio/ámbito), `not
 `notas_mixtas.csv`, `criticas_por_tema.csv`, `estrategia_gobierno_favorable.csv`,
 `estrategia_gobierno_toda_la_cobertura.csv`, `todas_las_notas.csv`.
 
+## Google Colab + Google Sheets
+
+Abre `colab/agua_gdl_colab.ipynb` en Colab (Archivo → Abrir cuaderno → GitHub, o sube el archivo) y corre las celdas en orden.
+- La hoja de cálculo es el panel: pestañas **Medios** (activo = no apaga un medio), **Busquedas** y **Revision**
+  (correcciones manuales `url,postura`); los resultados se escriben en **En contra**, **A favor**, **Mixtas**,
+  **Críticas por tema**, **Estrategia favorable**, **Estrategia (toda la cobertura)**, **Todas las notas** y **Resumen**.
+- `MODOS` elige cómo descubrir notas: `rss` y `sitemap` raspan directo cada medio; `google` busca por dominio en Google Noticias.
+  Lo recomendable es usar los tres: el scraping directo no depende de Google y Google Noticias llega más atrás en el tiempo.
+- `MAX_MEDIOS` / `SOLO_MEDIOS` limitan cuántos medios se raspan; con `GUARDAR_EN_DRIVE` la base se acumula entre corridas.
+- Si el repo es privado, guarda un token de GitHub en Colab (🔑 Secrets → `GITHUB_TOKEN`).
+
 ## Cómo funciona
 
-1. **Recolectar**: RSS propios de cada medio (si los hay) + búsquedas en Google Noticias restringidas por
+1. **Recolectar** (`--modo rss sitemap google`): RSS propios de cada medio, sitemaps (incluye news-sitemaps; filtra por fecha y por palabras de agua en el título/URL) + búsquedas en Google Noticias restringidas por
    `site:dominio` (`config/keywords.yaml` → `busquedas`). Los enlaces de Google se resuelven al artículo real con
    `googlenewsdecoder`.
 2. **Descargar**: respeta `robots.txt`, pausa por dominio y reintentos. Extrae título, fecha y cuerpo (JSON-LD →

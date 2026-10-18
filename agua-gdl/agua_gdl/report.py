@@ -60,29 +60,39 @@ def criticism_summary(rows, themes_cfg):
     return cards
 
 
+def split(rows):
+    """Reparte las notas relevantes en las listas que usan el reporte HTML, los CSV y Google Sheets."""
+    by = lambda st: [r for r in rows if r["stance"] == st]  # noqa: E731
+    en_contra = sorted(by("en_contra"), key=lambda r: -r["crit_score"])
+    a_favor = sorted(by("a_favor"), key=lambda r: -r["favor_score"])
+    strategy_all = [r for r in rows if r["covers_strategy"]]
+    strategy_fav = sorted(
+        (r for r in strategy_all if r["favor_score"] > r["crit_score"]),
+        key=lambda r: -(r["favor_score"] + r["strategy_score"]))
+    return {"en_contra": en_contra, "a_favor": a_favor, "mixtas": by("mixta"), "neutrales": by("neutral"),
+            "strategy_all": strategy_all, "strategy_fav": strategy_fav}
+
+
+def outlet_table(rows):
+    per_outlet = defaultdict(Counter)
+    for r in rows:
+        per_outlet[(r["source_name"], r["scope"])][r["stance"]] += 1
+    return sorted(
+        ({"medio": k[0], "ambito": k[1], "total": sum(c.values()), **{s: c.get(s, 0) for s in STANCE_LABEL}}
+         for k, c in per_outlet.items()), key=lambda o: (-o["total"], o["medio"]))
+
+
 def build(db, themes_cfg, out_dir, templates_dir):
     out = Path(out_dir)
     out.mkdir(parents=True, exist_ok=True)
     rows = db.results(only_relevant=True)
 
-    by = lambda st: [r for r in rows if r["stance"] == st]  # noqa: E731
-    en_contra = sorted(by("en_contra"), key=lambda r: -r["crit_score"])
-    a_favor = sorted(by("a_favor"), key=lambda r: -r["favor_score"])
-    mixtas = by("mixta")
-    neutrales = by("neutral")
-    strategy_all = [r for r in rows if r["covers_strategy"]]
-    strategy_fav = sorted(
-        (r for r in strategy_all if r["favor_score"] > r["crit_score"]),
-        key=lambda r: -(r["favor_score"] + r["strategy_score"]))
+    parts = split(rows)
+    en_contra, a_favor, mixtas, neutrales = parts["en_contra"], parts["a_favor"], parts["mixtas"], parts["neutrales"]
+    strategy_all, strategy_fav = parts["strategy_all"], parts["strategy_fav"]
     cards = criticism_summary(rows, themes_cfg)
     top_crit = en_contra[:15]
-
-    per_outlet = defaultdict(Counter)
-    for r in rows:
-        per_outlet[(r["source_name"], r["scope"])][r["stance"]] += 1
-    outlets = sorted(
-        ({"medio": k[0], "ambito": k[1], "total": sum(c.values()), **{s: c.get(s, 0) for s in STANCE_LABEL}}
-         for k, c in per_outlet.items()), key=lambda o: (-o["total"], o["medio"]))
+    outlets = outlet_table(rows)
     per_scope = {sc: Counter(r["stance"] for r in rows if r["scope"] == sc) for sc in ("local", "nacional")}
 
     # CSVs

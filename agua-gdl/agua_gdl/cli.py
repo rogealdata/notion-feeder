@@ -4,13 +4,14 @@ import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
-from .analysis import STANCES, Analyzer
+from .analysis import STANCES
 from .collect import add_urls, collect
 from .config import ROOT, Config
 from .db import DB
 from .fetch import fetch_all
 from .http import Client
 from .overrides import load as load_overrides
+from .pipeline import analyze_all
 from .report import build
 from .textutil import canonical_url
 
@@ -31,7 +32,8 @@ def _source_for_url(cfg):
 
 def cmd_collect(a, cfg, db):
     since = a.desde or cfg.keywords.get("desde")
-    s = collect(cfg, db, Client(delay=a.pausa), since, only=set(a.medio) if a.medio else None)
+    s = collect(cfg, db, Client(delay=a.pausa), since, only=set(a.medio) if a.medio else None,
+                modes=tuple(a.modo))
     print(f"{s['nuevas']} notas nuevas de {s['vistas']} vistas; {len(s['fallas'])} fuentes con falla")
 
 
@@ -40,18 +42,7 @@ def cmd_fetch(a, cfg, db):
 
 
 def cmd_analyze(a, cfg, db):
-    an = Analyzer(cfg)
-    ov = load_overrides(cfg.dir / "revision_manual.csv")
-    n = rel = 0
-    for r in db.to_analyze():
-        res = an.analyze(r["title"] or "", r["text"] or r["summary"] or "")
-        manual = ov.get(r["canonical_url"]) or ov.get(canonical_url(r["url"]))
-        if manual:
-            res["stance"], res["manual"] = manual, 1
-        db.save_analysis(r["id"], res)
-        n += 1
-        rel += res["relevant"]
-    print(f"{n} notas analizadas, {rel} relevantes")
+    analyze_all(db, cfg, load_overrides(cfg.dir / "revision_manual.csv"))
 
 
 def cmd_report(a, cfg, db):
@@ -99,6 +90,7 @@ def main(argv=None):
     p = sub.add_parser("recolectar", help="descubre notas (RSS + Google Noticias)")
     p.add_argument("--desde", help="AAAA-MM-DD")
     p.add_argument("--medio", nargs="*", help="ids de medios (ver sources.yaml)")
+    p.add_argument("--modo", nargs="+", default=["rss", "sitemap", "google"], choices=["rss", "sitemap", "google"])
     p.add_argument("--pausa", type=float, default=1.5)
     p.set_defaults(fn=cmd_collect)
 
@@ -126,6 +118,7 @@ def main(argv=None):
     p = sub.add_parser("todo", help="recolectar + descargar + analizar + reporte")
     p.add_argument("--desde")
     p.add_argument("--medio", nargs="*")
+    p.add_argument("--modo", nargs="+", default=["rss", "sitemap", "google"], choices=["rss", "sitemap", "google"])
     p.add_argument("--pausa", type=float, default=1.5)
     p.add_argument("--limite", type=int)
     p.add_argument("--ignorar-robots", action="store_true")
