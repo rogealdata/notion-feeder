@@ -1,0 +1,10 @@
+requests>=2.31
+beautifulsoup4>=4.12
+lxml>=5.0
+feedparser>=6.0
+PyYAML>=6.0
+Jinja2>=3.1
+# Opcional: resuelve los enlaces de Google Noticias al artículo real.
+googlenewsdecoder>=0.1.7
+# Solo para correr las pruebas:
+pytest>=8

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobertura del agua en la ZMG</title>
+<style>
+:root{--bg:#fafaf8;--fg:#1d2327;--mut:#667;--card:#fff;--line:#e2e2dc;--con:#b3261e;--fav:#1b6e3c;--mix:#8a6100;--neu:#667;--acc:#0b57a4}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e8e8e4;--mut:#9aa;--card:#1c2024;--line:#2e343a;--con:#ff8a80;--fav:#7bd49b;--mix:#e8c36a;--neu:#9aa;--acc:#7db7f5}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 16px 64px}
+h1{font-size:1.6rem;margin:0 0 4px}h2{font-size:1.25rem;margin:40px 0 8px;padding-top:8px;border-top:1px solid var(--line)}
+p.lead,.note{color:var(--mut);margin:4px 0 12px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px}.kpi b{display:block;font-size:1.5rem}
+.con{color:var(--con)}.fav{color:var(--fav)}.mix{color:var(--mix)}.neu{color:var(--neu)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;font-size:14px}
+th,td{padding:7px 9px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{color:var(--mut);font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+a{color:var(--acc)}details summary{cursor:pointer;color:var(--mut)}details blockquote{margin:6px 0;padding-left:10px;border-left:3px solid var(--line)}
+.cards{display:grid;gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:14px}
+.card h3{margin:0 0 4px;font-size:1.05rem}.meta{color:var(--mut);font-size:13px}
+.q{margin:8px 0;padding-left:10px;border-left:3px solid var(--con)}.q small{color:var(--mut)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.filters input,.filters select{padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+.tag{display:inline-block;padding:0 6px;border-radius:10px;border:1px solid var(--line);font-size:12px;color:var(--mut);margin-right:4px}
+.scroll{overflow-x:auto}
+</style>
+</head>
+<body><main>
+<h1>Cobertura mediática del problema del agua en la ZMG</h1>
+<p class="lead">Clasificación automática por reglas y léxico (sin modelos de lenguaje). “En contra” = la nota critica o cuestiona el manejo del gobierno; “a favor” = presenta de forma positiva la gestión o la estrategia. Es una primera clasificación: revisa la evidencia de cada nota y corrige en <code>config/revision_manual.csv</code>.</p>
+
+{% macro rows(items, show) %}
+<div class="scroll"><table class="art">
+<thead><tr><th>Fecha</th><th>Medio</th><th>Nota</th><th class="n">Pts</th></tr></thead><tbody>
+{% for r in items %}
+<tr data-medio="{{ r.source_name }}" data-ambito="{{ r.scope }}">
+<td>{{ r.published|fecha }}</td>
+<td>{{ r.source_name }}<br><span class="tag">{{ r.scope }}</span></td>
+<td><a href="{{ r.url|seguro }}" target="_blank" rel="noopener">{{ r.title or r.url }}</a>
+{% if r.partial %}<span class="tag" title="Se alcanzó a bajar poco texto (posible muro de pago)">texto parcial</span>{% endif %}
+{% if r.manual %}<span class="tag">corregida a mano</span>{% endif %}
+{% for t in r.themes[:3] %}<span class="tag">{{ t.etiqueta }}</span>{% endfor %}
+{% set ev = (r.evidence.critica if show == 'critica' else r.evidence.favor) %}
+{% if ev %}<details><summary>Evidencia</summary>{% for e in ev[:3] %}<blockquote>{{ e.frase }} <small>({{ e.terminos|join(', ') }})</small></blockquote>{% endfor %}</details>{% endif %}
+</td>
+<td class="n">{{ r.crit_score if show == 'critica' else r.favor_score }}</td></tr>
+{% else %}<tr><td colspan="4">Sin notas.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endmacro %}
+
+<div class="kpis">
+<div class="kpi"><b>{{ total }}</b>notas relevantes</div>
+<div class="kpi"><b class="con">{{ n_en_contra }}</b>en contra</div>
+<div class="kpi"><b class="fav">{{ n_a_favor }}</b>a favor</div>
+<div class="kpi"><b class="mix">{{ n_mixtas }}</b>mixtas</div>
+<div class="kpi"><b class="neu">{{ n_neutrales }}</b>neutrales</div>
+<div class="kpi"><b>{{ strategy_fav|length }}</b>cobertura favorable de la estrategia</div>
+</div>
+{% if parciales %}<p class="note">{{ parciales }} notas se analizaron con texto parcial (muro de pago o bloqueo): su clasificación es menos confiable.</p>{% endif %}
+
+<div class="filters">
+<input id="q" placeholder="Buscar en títulos…" oninput="applyFilters()">
+<select id="ambito" onchange="applyFilters()"><option value="">Local y nacional</option><option value="local">Solo locales</option><option value="nacional">Solo nacionales</option></select>
+<select id="medio" onchange="applyFilters()"><option value="">Todos los medios</option>{% for o in outlets %}<option>{{ o.medio }}</option>{% endfor %}</select>
+</div>
+
+<h2>Por medio</h2>
+<div class="scroll"><table>
+<thead><tr><th>Medio</th><th>Ámbito</th><th class="n">Total</th><th class="n">En contra</th><th class="n">A favor</th><th class="n">Mixtas</th><th class="n">Neutrales</th></tr></thead><tbody>
+{% for o in outlets %}<tr><td>{{ o.medio }}</td><td>{{ o.ambito }}</td><td class="n">{{ o.total }}</td><td class="n con">{{ o.en_contra }}</td><td class="n fav">{{ o.a_favor }}</td><td class="n mix">{{ o.mixta }}</td><td class="n">{{ o.neutral }}</td></tr>{% endfor %}
+</tbody></table></div>
+<p class="note">Locales: {{ per_scope.local.en_contra }} en contra / {{ per_scope.local.a_favor }} a favor · Nacionales: {{ per_scope.nacional.en_contra }} en contra / {{ per_scope.nacional.a_favor }} a favor.</p>
+
+<h2>Principales críticas</h2>
+<p class="lead">Temas que más aparecen en las notas críticas, con las frases que mejor las ilustran, a quién se dirigen y quién las formula.</p>
+<div class="cards">
+{% for c in cards %}
+<div class="card" data-medio="" data-ambito="">
+<h3>{{ c.etiqueta }}</h3>
+<div class="meta">{{ c.n }} notas · {{ c.locales }} locales / {{ c.nacionales }} nacionales · medios: {% for m, n in c.medios %}{{ m }} ({{ n }}){{ ", " if not loop.last }}{% endfor %}</div>
+{% if c.targets %}<div class="meta">Se dirige a: {% for t, n in c.targets %}{{ t }} ({{ n }}){{ ", " if not loop.last }}{% endfor %}</div>{% endif %}
+{% if c.voices %}<div class="meta">Quién critica: {% for t, n in c.voices %}{{ t }} ({{ n }}){{ ", " if not loop.last }}{% endfor %}</div>{% endif %}
+{% for q in c.quotes %}<div class="q">{{ q.frase }}<br><small>{{ q.medio }}, {{ q.fecha }} — <a href="{{ q.url|seguro }}" target="_blank" rel="noopener">{{ q.titulo }}</a></small></div>{% endfor %}
+</div>
+{% else %}<p class="note">Aún no hay notas críticas.</p>{% endfor %}
+</div>
+
+<h2>Las notas más críticas</h2>
+{{ rows(top_crit, 'critica') }}
+
+<h2>Notas en contra ({{ n_en_contra }})</h2>
+{{ rows(en_contra, 'critica') }}
+
+<h2>Notas a favor ({{ n_a_favor }})</h2>
+{{ rows(a_favor, 'favor') }}
+
+<h2>Cobertura favorable de la estrategia del gobierno ({{ strategy_fav|length }})</h2>
+<p class="lead">Notas que hablan de la estrategia de respuesta (planes, obras, inversión, programas) con más señales positivas que críticas. La cobertura completa de la estrategia, con cualquier postura, está en <code>estrategia_gobierno_toda_la_cobertura.csv</code>.</p>
+{{ rows(strategy_fav, 'favor') }}
+
+<h2>Notas mixtas ({{ n_mixtas }})</h2>
+<details><summary>Mostrar</summary>{{ rows(mixtas, 'critica') }}</details>
+</main>
+<script>
+function applyFilters(){
+  const q=document.getElementById('q').value.toLowerCase(),
+        a=document.getElementById('ambito').value,
+        m=document.getElementById('medio').value;
+  document.querySelectorAll('table.art tbody tr').forEach(tr=>{
+    if(!tr.dataset.medio&&!tr.dataset.ambito){return;}
+    const ok=(!a||tr.dataset.ambito===a)&&(!m||tr.dataset.medio===m)&&(!q||tr.innerText.toLowerCase().includes(q));
+    tr.style.display=ok?'':'none';
+  });
+}
+</script>
+</body></html>

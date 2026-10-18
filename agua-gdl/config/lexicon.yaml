@@ -1,0 +1,241 @@
+# Léxico para clasificar postura SIN modelos de lenguaje.
+# Todo se aplica sobre texto normalizado (minúsculas, sin acentos, sin ñ -> n).
+# Cada patrón es regex; se antepone \b. Usa \w* para raíces (p. ej. inaugur\w*).
+# "Postura" = frente al manejo del gobierno del problema del agua:
+#   en_contra = la nota critica / cuestiona la gestión
+#   a_favor   = la nota presenta de forma positiva la gestión o la estrategia
+# Ajusta pesos y términos a medida que revises los resultados (comando `evaluar`).
+
+actores_gobierno:
+  - siapa
+  - sistema intermunicipal de los servicios de agua
+  - cea jalisco
+  - cea
+  - comision estatal del agua
+  - conagua
+  - comision nacional del agua
+  - gobierno de jalisco
+  - gobierno del estado
+  - gobierno estatal
+  - gobierno federal
+  - gobierno municipal
+  - gobierno
+  - gobernador\w*
+  - lemus
+  - alfaro
+  - sheinbaum
+  - ayuntamiento\w*
+  - alcalde\w*
+  - alcaldesa\w*
+  - presidente\w* municipal\w*
+  - autoridades
+  - autoridad
+  - organismo operador
+  - semadet
+  - imeplan
+  - administracion estatal
+  - dependencia\w*
+
+# Crítica directa a la gestión. Peso = clave.
+critica:
+  3:
+    - corrupcion
+    - corrupt\w*
+    - negligen\w*
+    - opacidad
+    - opac[oa]s?
+    - incompeten\w*
+    - ineptitud
+    - irresponsab\w*
+    - sobrecosto\w*
+    - irregularidad\w*
+    - simulacion
+    - encubr\w*
+    - fracas\w*
+    - fallid\w*
+    - improvis\w*
+    - abandono
+    - omision
+    - omis[oa]s?
+    - mala gestion
+    - mal manejo
+    - mala planeacion
+    - falta de planeacion
+    - falta de estrategia
+    - falta de transparencia
+    - incumpl\w*
+    - promesas? incumplid\w*
+    - desvio de recursos
+    - culpa\w* a
+  2:
+    - deficien\w*
+    - ineficien\w*
+    - insuficien\w*
+    - tardi[ao]s?
+    - retraso\w*
+    - retrasad\w*
+    - rezago\w*
+    - colaps\w*
+    - caos
+    - reprueb\w*
+    - polemic\w*
+    - escandalo\w*
+    - precari\w*
+    - paliativ\w*
+    - parches?
+    - insostenible
+    - inviable
+    - ocurrencia\w*
+    - demagogi\w*
+    - descuido
+    - desatencion
+    - desatend\w*
+    - no ha resuelto
+    - no resuelve
+    - sin solucion
+    - lejos de resolver
+    - no alcanza
+    - no basta
+    - sin planeacion
+    - sin plan
+    - mentira\w*
+    - engan\w*
+  1:
+    - preocup\w*
+    - riesgo\w*
+    - dudas?
+    - pendiente\w*
+    - sospech\w*
+    - cuestionamiento\w*
+
+# Verbos de atribución crítica (alguien reclama / acusa). Pesan si hay actor de gobierno en la oración.
+atribucion:
+  2:
+    - acusa\w*
+    - denunci\w*
+    - exig\w*
+    - reclam\w*
+    - reprocha\w*
+    - cuestion\w*
+    - rechaz\w*
+    - demand\w*
+  1:
+    - protest\w*
+    - advierte\w*
+    - alert\w*
+    - queja\w*
+    - inconform\w*
+    - piden
+    - pidieron
+    - bloque\w*
+    - planton\w*
+    - manifest\w*
+
+# Descripción del problema (no es crítica por sí sola; pesa solo si hay actor de gobierno).
+problema:
+  2:
+    - desabasto
+    - sin agua
+    - no hay agua
+    - falta de agua
+    - crisis hidrica
+    - crisis del agua
+  1:
+    - escasez
+    - sequia
+    - tandeo\w*
+    - fugas?
+    - agua turbia
+    - agua contaminada
+    - contaminacion
+    - baja presion
+    - bajo nivel
+    - pipas?
+    - colonias afectadas
+    - emergencia
+
+# Presentación favorable de la gestión o la estrategia.
+favor:
+  3:
+    - inaugur\w*
+    - garantiz\w*
+    - restablec\w*
+    - normaliz\w*
+    - exito\w*
+    - cumpl\w*
+    - cumplimiento
+  2:
+    - beneficiar\w*
+    - avance\w*
+    - avanz\w*
+    - mejora\w*
+    - fortalec\w*
+    - refuerz\w*
+    - rehabilit\w*
+    - moderniz\w*
+    - inversion\w*
+    - invert\w*
+    - nuevos? pozos?
+    - perforacion
+    - estabiliz\w*
+    - disminu\w*
+    - reduc\w*
+    - supera\w*
+    - eficien\w*
+    - eficaz\w*
+    - solucion\w*
+    - resuelve\w*
+    - resolver\w*
+  1:
+    - atend\w*
+    - apoy\w*
+    - recuper\w*
+    - respuesta
+    - millones de pesos
+    - arranca\w*
+    - anunci\w*
+    - obras?
+    - respald\w*
+    - destac\w*
+
+negadores: ["no", "sin", "nunca", "ni", "tampoco", "nadie", "jamas"]
+
+# Términos que indican que la nota habla de la ESTRATEGIA / respuesta del gobierno.
+estrategia:
+  - estrategia\w*
+  - plan hidrico
+  - plan integral
+  - plan de accion
+  - programa\w*
+  - acciones
+  - medidas
+  - obras?
+  - inversion\w*
+  - proyecto\w*
+  - acueducto\w*
+  - sectorizacion
+  - nuevos? pozos?
+  - perforacion
+  - rehabilitacion
+  - mesa de trabajo
+  - convenio\w*
+  - declaratoria
+  - plan de emergencia
+  - respuesta del gobierno
+
+# Quién critica (voces citadas).
+voces:
+  vecinos y colonos: ['vecinos?', 'colonos?', 'habitantes', 'ciudadan\w*']
+  colectivos y activistas: ['colectivos?', 'activistas?', 'ambientalistas?', 'organizacion\w* civil\w*', 'ong']
+  academia y especialistas: ['academic\w*', 'investigador\w*', 'especialistas?', 'expertos?', 'iteso', 'universidad de guadalajara', 'udeg']
+  legisladores y oposicion: ['diputad\w*', 'regidor\w*', 'senador\w*', 'oposicion', 'morena', 'movimiento ciudadano', 'legislador\w*']
+  sector privado: ['empresarios?', 'comerciantes', 'camara\w*', 'industriales?', 'desarrolladores?', 'inmobiliari\w*']
+
+umbrales:
+  min_senal: 3        # suma mínima (crítica + favor) para no ser "neutral"
+  razon: 1.6          # (crit+1)/(favor+1) >= razon -> en_contra; <= 1/razon -> a_favor; en medio -> mixta
+  peso_titulo: 2.0
+  peso_entradilla: 1.3     # primeras 2 oraciones
+  factor_actor: 1.3        # multiplicador si la oración nombra a un actor de gobierno
+  factor_problema_sin_actor: 0.3
+  min_estrategia: 2        # puntaje mínimo para considerar que la nota cubre la estrategia

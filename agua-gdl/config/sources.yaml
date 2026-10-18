@@ -1,0 +1,45 @@
+# Medios a revisar. Para cada uno:
+#   id        identificador corto
+#   name      nombre del medio
+#   scope     local | nacional
+#   domain    dominio (se usa para buscar en Google Noticias con site:)
+#   rss       lista opcional de feeds RSS propios (se filtran por palabras de agua)
+#   paywall   true si el sitio suele cortar el texto (se analiza lo que se alcance a bajar)
+#
+# Los feeds RSS cambian seguido: si alguno falla, `recolectar` lo reporta y sigue con
+# los demás. Ajusta esta lista a tu gusto; agregar un medio es agregar un bloque.
+
+sources:
+  # ---------- Locales (Jalisco / ZMG) ----------
+  - {id: informador,   name: El Informador,        scope: local, domain: informador.mx, rss: ["https://www.informador.mx/rss/jalisco.xml"]}
+  - {id: mural,        name: Mural,                scope: local, domain: mural.com, paywall: true}
+  - {id: occidental,   name: El Occidental,        scope: local, domain: elOccidental.com.mx}
+  - {id: notisistema,  name: Notisistema,          scope: local, domain: notisistema.com}
+  - {id: zonadocs,     name: Zona Docs,            scope: local, domain: zonadocs.mx}
+  - {id: udgtv,        name: UDG TV,               scope: local, domain: udgtv.com}
+  - {id: quadratin,    name: Quadratín Jalisco,    scope: local, domain: jalisco.quadratin.com.mx}
+  - {id: ntr,          name: NTR Guadalajara,      scope: local, domain: ntrguadalajara.com}
+  - {id: cuatrocinco,  name: Cuatro Cinco,         scope: local, domain: cuatrocinco.com.mx}
+  - {id: ljz,          name: La Jornada Jalisco,   scope: local, domain: lajornadajalisco.com.mx}
+
+  # ---------- Nacionales ----------
+  - {id: jornada,      name: La Jornada,           scope: nacional, domain: jornada.com.mx, rss: ["https://www.jornada.com.mx/rss/estados.xml"]}
+  - {id: proceso,      name: Proceso,              scope: nacional, domain: proceso.com.mx}
+  - {id: universal,    name: El Universal,         scope: nacional, domain: eluniversal.com.mx}
+  - {id: reforma,      name: Reforma,              scope: nacional, domain: reforma.com, paywall: true}
+  - {id: excelsior,    name: Excélsior,            scope: nacional, domain: excelsior.com.mx}
+  - {id: financiero,   name: El Financiero,        scope: nacional, domain: elfinanciero.com.mx}
+  - {id: expansion,    name: Expansión,            scope: nacional, domain: expansion.mx}
+  - {id: animal,       name: Animal Político,      scope: nacional, domain: animalpolitico.com}
+  - {id: aristegui,    name: Aristegui Noticias,   scope: nacional, domain: aristeguinoticias.com}
+  - {id: infobae,      name: Infobae México,       scope: nacional, domain: infobae.com}
+  - {id: elpais,       name: El País México,       scope: nacional, domain: elpais.com}
+  - {id: sinembargo,   name: SinEmbargo,           scope: nacional, domain: sinembargo.mx}
+  - {id: latinus,      name: Latinus,              scope: nacional, domain: latinus.us}
+  - {id: mcci, name: Mexicanos Contra la Corrupción, scope: nacional, domain: contralacorrupcion.mx}
+  - {id: elsol,        name: El Sol de México,     scope: nacional, domain: elsoldemexico.com.mx}
+  - {id: milenio,      name: Milenio,              scope: nacional, domain: milenio.com}
+  - {id: politico,     name: Político MX,          scope: nacional, domain: politico.mx}
+  - {id: piedepagina,  name: Pie de Página,        scope: nacional, domain: piedepagina.mx}
+  - {id: desinformemonos, name: Desinformémonos,   scope: nacional, domain: desinformemonos.org}
+  - {id: imagen,       name: Imagen Radio / TV,    scope: nacional, domain: imagenradio.com.mx}

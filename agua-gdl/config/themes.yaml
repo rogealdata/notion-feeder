@@ -1,0 +1,34 @@
+# Taxonomía de temas de crítica (regex sobre texto normalizado, \b automático).
+desabasto_y_tandeos:
+  etiqueta: Desabasto, tandeos y colonias sin agua
+  patrones: ['desabasto', 'sin agua', 'falta de agua', 'no hay agua', 'tandeo\w*', 'pipas?', 'baja presion', 'colonias? afectad\w*']
+calidad_del_agua:
+  etiqueta: Calidad del agua
+  patrones: ['agua turbia', 'calidad del agua', 'contaminad\w*', 'mal olor', 'metales pesados', 'arsenico', 'potabilidad', 'insalubre']
+corrupcion_y_opacidad:
+  etiqueta: Corrupción, opacidad y contratos
+  patrones: ['corrupcion', 'opacidad', 'opac[oa]s?', 'transparencia', 'contratos?', 'licitacion\w*', 'sobrecosto\w*', 'desvio\w*', 'irregularidad\w*', 'adjudicacion\w*']
+infraestructura_y_fugas:
+  etiqueta: Infraestructura obsoleta y fugas
+  patrones: ['fugas?', 'tuberia\w*', 'red de agua', 'infraestructura', 'obsolet\w*', 'colector\w*', 'drenaje\w*', 'perdidas de agua', 'mantenimiento']
+sobreexplotacion:
+  etiqueta: Sobreexplotación de acuíferos y pozos
+  patrones: ['sobreexplot\w*', 'acuifero\w*', 'abatimiento', 'pozos? clandestin\w*', 'pozos? irregular\w*', 'concesion\w*', 'huachicol\w*', 'extraccion']
+fuentes_y_chapala:
+  etiqueta: Fuentes de abasto (Chapala, presas, Zapotillo)
+  patrones: ['chapala', 'zapotillo', 'presa calderon', 'presa\w*', 'acueducto\w*', 'nivel del lago', 'nivel de la presa', 'trasvase\w*']
+tarifas_y_cobros:
+  etiqueta: Tarifas, cobros y recibos
+  patrones: ['tarifa\w*', 'cobros?', 'recibos?', 'aumento\w*', 'costo del agua', 'incremento\w* al agua']
+planeacion_y_desarrollos:
+  etiqueta: Planeación urbana y desarrollos inmobiliarios
+  patrones: ['desarrollos? inmobiliari\w*', 'crecimiento urbano', 'factibilidad', 'planeacion', 'inmobiliari\w*', 'vivienda']
+contaminacion_rios:
+  etiqueta: Contaminación de ríos (Santiago, Lerma)
+  patrones: ['rio santiago', 'rio lerma', 'rio verde', 'el ahogado', 'descargas?', 'residuos industriales', 'el salto', 'juanacatlan']
+respuesta_tardia:
+  etiqueta: Respuesta tardía, improvisada o sin estrategia
+  patrones: ['improvis\w*', 'tardi[ao]s?', 'falta de estrategia', 'sin estrategia', 'sin plan', 'promesas?', 'parches?', 'paliativ\w*', 'reactiv[ao]s?', 'ocurrencia\w*', 'falta de planeacion']
+protesta_social:
+  etiqueta: Protestas y conflicto social
+  patrones: ['protest\w*', 'manifest\w*', 'bloque\w*', 'planton\w*', 'inconformidad\w*', 'movilizacion\w*']

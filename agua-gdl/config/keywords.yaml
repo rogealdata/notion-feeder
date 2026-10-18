@@ -1,0 +1,62 @@
+# Búsquedas que se lanzan por cada medio (Google Noticias, site:dominio).
+busquedas:
+  - agua Guadalajara
+  - SIAPA agua
+  - desabasto agua Jalisco
+  - crisis hídrica Zona Metropolitana de Guadalajara
+  - Lago de Chapala agua Guadalajara
+
+# Fecha mínima (AAAA-MM-DD). Se puede sobreescribir con --desde.
+desde: "2025-01-01"
+
+# --- Relevancia (se evalúa sobre texto normalizado: sin acentos y en minúsculas) ---
+# Un patrón por línea, regex. Se antepone \b automáticamente.
+agua:
+  - agua
+  - hidric\w*
+  - siapa
+  - tandeo\w*
+  - desabasto
+  - potable
+  - acuifer\w*
+  - presa\w*
+  - chapala
+  - zapotillo
+  - pozo\w*
+  - sequia
+  - escasez
+  - acueducto\w*
+  - drenaje\w*
+  - cea jalisco
+  - conagua
+
+geo:
+  - guadalajara
+  - zapopan
+  - tlaquepaque
+  - tonala
+  - tlajomulco
+  - el salto
+  - juanacatlan
+  - ixtlahuacan\w*
+  - zona metropolitana
+  - area metropolitana
+  - zmg
+  - amg
+  - jalisco
+  - siapa
+  - chapala
+  - zapotillo
+
+# Descarta notas de ruido (p. ej. recetas, horóscopos).
+excluir:
+  - agua de coco
+  - horoscopo
+  - receta\w*
+  - agua bendita
+  - aguas termales
+
+umbrales_relevancia:
+  min_agua: 2       # menciones ponderadas de términos de agua
+  min_geo: 1        # menciones de zona geográfica
+  min_problema: 1   # al menos un término de problema o de estrategia (ver lexicon.yaml)
