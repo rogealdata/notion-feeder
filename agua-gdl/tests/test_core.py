@@ -1,4 +1,6 @@
 """Pruebas con textos SINTÉTICOS escritos para validar la lógica (no son notas reales)."""
+from pathlib import Path
+
 import pytest
 
 from agua_gdl.analysis import Analyzer
@@ -117,7 +119,7 @@ def test_pipeline_report_and_overrides(tmp_path):
         db.save_analysis(r["id"], an.analyze(r["title"], r["text"]))
 
     out = tmp_path / "out"
-    summary = build(db, cfg.themes, out, __import__("pathlib").Path("agua_gdl/templates"))
+    summary = build(db, cfg.themes, out, Path(__file__).resolve().parent.parent / "agua_gdl" / "templates")
     assert summary["en_contra"] == 1 and summary["a_favor"] == 1 and summary["neutrales"] == 1
     html = (out / "reporte.html").read_text(encoding="utf-8")
     assert "Principales críticas" in html and "Medio Local" in html
