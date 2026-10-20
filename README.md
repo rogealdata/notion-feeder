@@ -40,6 +40,10 @@ Different views of accessing Unread, Starred feed items.
 
 ![](/screenshots/image-5.png)
 
+### YouTube video summaries
+
+Add a YouTube channel feed (`https://www.youtube.com/feeds/videos.xml?channel_id=<CHANNEL_ID>`) to your **Feeds** database. If the `ANTHROPIC_API_KEY` secret is set, each new video's transcript is summarized with Claude and the summary is placed at the top of the Notion page. Optional env vars: `SUMMARY_LANGUAGE` (e.g. `Spanish`) and `SUMMARY_MODEL`. Videos without captions are added without a summary.
+
 ## Setup
 
 1. Create a new [Notion Integration](https://www.notion.so/my-integrations) and copy the secret code which you'll use as `NOTION_API_TOKEN` in Step 4.

@@ -11,11 +11,11 @@ function htmlToMarkdownJSON(htmlContent) {
   }
 }
 
-function jsonToNotionBlocks(markdownContent) {
+export function markdownToNotionBlocks(markdownContent) {
   return markdownToBlocks(markdownContent);
 }
 
 export default function htmlToNotionBlocks(htmlContent) {
   const markdownJson = htmlToMarkdownJSON(htmlContent);
-  return jsonToNotionBlocks(markdownJson);
+  return markdownToNotionBlocks(markdownJson);
 }
