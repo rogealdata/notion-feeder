@@ -1,0 +1,224 @@
+<title>Paralaje 01 Portadas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* Layout: panel de controles arriba, dos artboards (portada, contraportada) lado a lado.
+   Los artboards escalan con container units (cqw), así todo el diseño es proporcional. */
+:root{
+  --bg:#ece9e1; --fg:#17151a; --muted:#6a6572; --line:#cfcac0; --surface:#f6f4ee; --accent:#4b2a82;
+  /* paleta de la revista (editable en el panel) */
+  --olive:#8c9238; --violet:#4b2a82; --paper:#e9e1cb; --ink:#0b0b0e;
+  --bar:.54; --period:6.757cqw;
+  --display:'Dela Gothic One','Arial Black',Impact,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+  --mono:'DM Mono',ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121115;--fg:#ece8f2;--muted:#9a94a6;--line:#2c2933;--surface:#1b1920;--accent:#b79cf0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121115;--fg:#ece8f2;--muted:#9a94a6;--line:#2c2933;--surface:#1b1920;--accent:#b79cf0;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15px/1.5 var(--serif);padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1{font:400 clamp(26px,4vw,40px)/1.05 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{margin:6px 0 0;color:var(--muted);max-width:60ch}
+.panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px 28px;padding:20px 0;border-block:1px solid var(--line)}
+.panel h2{grid-column:1/-1;margin:0;font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.field label{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field input[type=text]{font:inherit;padding:8px 10px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:3px;min-width:0}
+.field input[type=range]{width:100%;accent-color:var(--accent)}
+.field input[type=color]{width:100%;height:36px;border:1px solid var(--line);background:var(--surface);padding:2px;border-radius:3px;cursor:pointer}
+button{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:11px 14px;border:1px solid var(--fg);background:transparent;color:var(--fg);border-radius:3px;cursor:pointer;align-self:end}
+button:hover{background:var(--fg);color:var(--bg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:36px;align-items:start}
+figure{margin:0;display:flex;flex-direction:column;gap:10px;min-width:0}
+figcaption{font:500 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- artboard ---------- */
+.board{position:relative;width:100%;max-width:560px;margin-inline:auto;aspect-ratio:148/210;container-type:size;overflow:hidden;background:var(--paper);box-shadow:0 1px 0 var(--line),0 18px 40px -22px rgba(0,0,0,.45)}
+.board::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:multiply;opacity:.5;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .55  0 0 0 0 .5  0 0 0 0 .4  0 0 0 .5 0'/></filter><rect width='300' height='300' filter='url(%23n)'/></svg>")}
+.board svg.decor{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stripes{position:absolute;inset:0;background:linear-gradient(to bottom,transparent calc((1 - var(--bar))*100%),var(--ink) 0) 0 2.7cqw/100% var(--period) repeat-y}
+[contenteditable]{outline:none;cursor:text}
+[contenteditable]:hover{box-shadow:0 0 0 .25cqw color-mix(in srgb,var(--olive) 70%,transparent)}
+[contenteditable]:focus{box-shadow:0 0 0 .3cqw var(--violet)}
+
+/* portada */
+.titleblocks{position:absolute;left:5cqw;right:5cqw;top:6cqw;display:flex;gap:.8cqw;z-index:2}
+.tb{flex:1;background:var(--ink);color:var(--paper);display:grid;place-items:center;aspect-ratio:.8/1;font-family:var(--display);line-height:1;position:relative}
+.tb::after{content:"";position:absolute;right:12%;bottom:11%;width:9%;aspect-ratio:1;border-radius:50%;background:var(--olive)}
+.tag{position:absolute;left:0;right:0;text-align:center;z-index:2}
+.tag span{display:inline-block;background:var(--paper);color:var(--ink);padding:.7cqw 1.8cqw}
+.tag.a{top:24cqw;font:italic 400 3.4cqw/1.1 var(--serif)}
+.tag.b{top:30.5cqw;font:500 1.55cqw/1 var(--mono);letter-spacing:.2em;text-transform:uppercase}
+.foot{position:absolute;left:0;right:0;bottom:0;height:15cqw;background:var(--ink);color:var(--paper);display:flex;align-items:center;gap:3cqw;padding:0 5cqw;z-index:2}
+.foot .num{font:400 11cqw/1 var(--display);color:var(--olive)}
+.foot .ed{font:400 5.2cqw/1 var(--display);letter-spacing:.02em}
+.foot .meta{margin-left:auto;text-align:right;font:italic 400 2cqw/1.3 var(--serif);color:var(--paper)}
+.foot .meta b{display:block;font:500 1.4cqw/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--olive);font-style:normal;margin-bottom:.6cqw}
+
+/* contraportada */
+.board.back{background:var(--ink);color:var(--paper)}
+.board.back::after{opacity:.28}
+.back .band{position:absolute;left:0;right:0;top:0;height:13.5cqw;background:linear-gradient(to bottom,transparent calc((1 - var(--bar))*100%),var(--violet) 0) 0 2.7cqw/100% var(--period) repeat-y}
+.back .quote{position:absolute;left:36cqw;right:8cqw;top:41cqw;text-align:right;font:400 4.1cqw/1.2 var(--serif);font-style:italic;color:var(--paper)}
+.back .sheet{position:absolute;left:8cqw;right:8cqw;top:55cqw;bottom:13cqw;background:var(--paper);color:var(--ink);border-radius:2.6cqw;padding:4.2cqw 4.6cqw;display:flex;flex-direction:column;gap:2.1cqw;font:400 2.55cqw/1.34 var(--serif);overflow:hidden}
+.back .sheet h3{margin:0;font:400 4.1cqw/1 var(--display);color:var(--violet)}
+.back .sheet p{margin:0}
+.back .sheet .k{font:500 1.35cqw/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--violet);display:block;margin-bottom:.5cqw}
+.back .sheet .words{font:400 3.1cqw/1.2 var(--display);letter-spacing:.01em}
+.back .sheet .mail{margin-top:auto;border-top:.3cqw solid var(--ink);padding-top:1.8cqw;display:flex;justify-content:space-between;gap:2cqw;align-items:end}
+.back .sheet .mail strong{font:500 2.4cqw/1.1 var(--mono)}
+.back .sheet .mail em{font-size:2.2cqw}
+.back .isbn{position:absolute;left:8cqw;bottom:5cqw;font:400 1.5cqw/1 var(--mono);letter-spacing:.14em;color:var(--olive);text-transform:uppercase}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Paralaje 01 · Sombra</h1>
+    <p class="lede">Portada y contraportada. Haz clic en cualquier texto de las portadas para escribir sobre él; el título, los colores y las proporciones se cambian aquí abajo.</p>
+  </header>
+
+  <section class="panel" aria-label="Controles">
+    <h2>Texto</h2>
+    <div class="field"><label for="f-title">Título (portada)</label><input id="f-title" type="text" value="PARALAJE" maxlength="12"></div>
+    <div class="field"><label for="f-num">Número</label><input id="f-num" type="text" value="01" maxlength="3"></div>
+    <div class="field"><label for="f-ed">Nombre de la edición</label><input id="f-ed" type="text" value="SOMBRA" maxlength="14"></div>
+    <h2>Color</h2>
+    <div class="field"><label for="c-olive">Verde oliva</label><input id="c-olive" type="color" value="#8c9238"></div>
+    <div class="field"><label for="c-violet">Violeta</label><input id="c-violet" type="color" value="#4b2a82"></div>
+    <div class="field"><label for="c-paper">Papel</label><input id="c-paper" type="color" value="#e9e1cb"></div>
+    <div class="field"><label for="c-ink">Negro</label><input id="c-ink" type="color" value="#0b0b0e"></div>
+    <h2>Composición</h2>
+    <div class="field"><label for="r-bar">Grosor de las franjas · <span id="o-bar">54</span>%</label><input id="r-bar" type="range" min="15" max="85" value="54"></div>
+    <div class="field"><label for="r-par">Paralaje (separación) · <span id="o-par">5</span></label><input id="r-par" type="range" min="0" max="16" step=".5" value="5"></div>
+    <div class="field"><label for="r-hor">Horizonte · <span id="o-hor">63</span>%</label><input id="r-hor" type="range" min="55" max="76" value="63"></div>
+    <div class="field"><button id="reset" type="button">Restablecer</button></div>
+  </section>
+
+  <div class="boards">
+    <figure>
+      <div class="board front" id="front">
+        <div class="stripes"></div>
+        <svg class="decor" id="decor" viewBox="0 0 1480 2100" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="titleblocks" id="tblocks" role="img" aria-label="Título"></div>
+        <div class="tag a"><span contenteditable="true" spellcheck="false">la noche, vista desde dos puntos</span></div>
+        <div class="tag b"><span contenteditable="true" spellcheck="false">revista hispanohablante · París</span></div>
+        <div class="foot">
+          <div class="num" id="o-num">01</div>
+          <div class="ed" id="o-ed">SOMBRA</div>
+          <div class="meta"><b contenteditable="true" spellcheck="false">Edición de noche</b><span contenteditable="true" spellcheck="false">y otra de día, en el mismo cielo</span></div>
+        </div>
+      </div>
+      <figcaption>Portada</figcaption>
+    </figure>
+
+    <figure>
+      <div class="board back" id="back">
+        <div class="band"></div>
+        <svg class="decor" id="decor2" viewBox="0 0 1480 2100" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="quote" contenteditable="true" spellcheck="false">Lucha contra el lugar común.</div>
+        <div class="sheet">
+          <h3 contenteditable="true" spellcheck="false">Convocatoria · 1.ª edición</h3>
+          <p contenteditable="true" spellcheck="false"><span class="k">Paralaje</span>Cambio de posición aparente de un objeto cuando se observa desde dos puntos de vista. Una revista nacida lejos de casa, a nueve mil kilómetros y un tercio de día de desfase.</p>
+          <p contenteditable="true" spellcheck="false"><span class="k">Sombra · noche</span>Piezas que nombren lo que la luz nocturna oculta, y también lo que posibilita y revela.</p>
+          <p class="words" contenteditable="true" spellcheck="false">CUERPO · RITMO · CALLE<br>VÉRTIGO · PUNTO FINAL</p>
+          <p contenteditable="true" spellcheck="false"><span class="k">Formatos · hasta 3 000 caracteres</span>Crónica · Poesía · Ficción · Ensayo · Foto. Solo en español, desde cualquier parte del mundo.</p>
+          <div class="mail">
+            <div contenteditable="true" spellcheck="false"><span class="k" style="display:block;font:500 1.35cqw/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-bottom:.6cqw">Cierre 31.10.2026 · 23h París</span><strong>redaccion.paralaje@gmail.com</strong></div>
+            <em contenteditable="true" spellcheck="false">Sofía, Marea y Rogelio</em>
+          </div>
+        </div>
+        <div class="isbn" contenteditable="true" spellcheck="false">Paralaje 01 · Sombra · París</div>
+      </div>
+      <figcaption>Contraportada</figcaption>
+    </figure>
+  </div>
+</div>
+
+<script>
+(function(){
+  var DEF={title:'PARALAJE',num:'01',ed:'SOMBRA',olive:'#8c9238',violet:'#4b2a82',paper:'#e9e1cb',ink:'#0b0b0e',bar:54,par:5,hor:63};
+  var S=Object.assign({},DEF);
+  var $=function(id){return document.getElementById(id)};
+  var root=document.documentElement;
+
+  function figure(){
+    return '<path d="M606 318 Q604 196 738 190 Q870 196 872 318 Z"/><ellipse cx="738" cy="322" rx="160" ry="24"/>'+
+    '<path d="M662 340 L850 340 L852 450 Q836 520 772 530 L704 524 Q662 496 660 440 L628 418 L640 398 L662 404 Z"/>'+
+    '<path d="M608 548 Q738 512 868 548 Q936 640 956 930 L992 1300 L492 1300 L526 930 Q542 640 608 548 Z"/>'+
+    '<path d="M628 1290 L726 1290 L704 1860 L618 1860 Z"/><path d="M770 1290 L868 1290 L896 1850 L810 1860 Z"/>'+
+    '<path d="M600 1850 L720 1850 Q730 1930 690 1938 L560 1938 Q548 1890 600 1850 Z"/>'+
+    '<path d="M800 1848 L908 1848 Q990 1900 964 1936 L810 1936 Q790 1900 800 1848 Z"/>';
+  }
+
+  function front(){
+    var H=2100, h=Math.round(H*S.hor/100), d=S.par*14.8/2, r=340, cy=h-130, cx=740;
+    var s='<g style="isolation:isolate">'+
+      '<circle cx="'+(cx-d)+'" cy="'+cy+'" r="'+r+'" fill="'+S.olive+'"/>'+
+      '<circle cx="'+(cx+d)+'" cy="'+cy+'" r="'+r+'" fill="'+S.violet+'" style="mix-blend-mode:screen"/></g>';
+    // superficie lunar: tinta con líneas de papel que se separan hacia abajo (perspectiva)
+    s+='<rect x="0" y="'+h+'" width="1480" height="'+(H-h)+'" fill="'+S.ink+'"/>';
+    var n=26, span=H-h-232;
+    for(var i=0;i<n;i++){
+      var t=i/(n-1), y=h+14+span*Math.pow(t,1.9), th=2+9*t;
+      s+='<rect x="0" y="'+y.toFixed(1)+'" width="1480" height="'+th.toFixed(1)+'" fill="'+S.paper+'" opacity="'+(.35+.55*t).toFixed(2)+'"/>';
+    }
+    s+='<rect x="0" y="'+(h-3)+'" width="1480" height="6" fill="'+S.paper+'"/>';
+    // observador sobre el horizonte
+    s+='<g transform="translate(1215 '+h+') scale(.1) translate(-740 -1938)" fill="'+S.violet+'" stroke="'+S.paper+'" stroke-width="22" paint-order="stroke">'+figure()+'</g>';
+    $('decor').innerHTML=s;
+  }
+
+  function back(){
+    var s='<defs><mask id="m1"><rect width="1480" height="2100" fill="#fff"/><circle cx="410" cy="455" r="205" fill="#000"/></mask>'+
+          '<mask id="m2"><rect width="1480" height="2100" fill="#fff"/><circle cx="440" cy="440" r="205" fill="#000"/></mask></defs>';
+    var off=S.par*5;
+    s+='<g style="isolation:isolate">'+
+       '<circle cx="'+(330-off)+'" cy="500" r="205" fill="'+S.olive+'" mask="url(#m1)"/>'+
+       '<circle cx="'+(330+off)+'" cy="500" r="205" fill="'+S.violet+'" mask="url(#m2)" style="mix-blend-mode:screen"/></g>';
+    s+='<circle cx="388" cy="470" r="10" fill="'+S.paper+'"/>';
+    $('decor2').innerHTML=s;
+  }
+
+  function blocks(){
+    var t=(S.title||'').toUpperCase(), n=Math.max(t.length,1), gap=.8, w=(90-gap*(n-1))/n;
+    var el=$('tblocks'); el.innerHTML='';
+    t.split('').forEach(function(ch){
+      var b=document.createElement('div'); b.className='tb'; b.textContent=ch===' '?' ':ch;
+      b.style.fontSize=(w*.88).toFixed(2)+'cqw'; el.appendChild(b);
+    });
+    el.setAttribute('aria-label','Título: '+t);
+  }
+
+  function apply(){
+    root.style.setProperty('--olive',S.olive); root.style.setProperty('--violet',S.violet);
+    root.style.setProperty('--paper',S.paper); root.style.setProperty('--ink',S.ink);
+    root.style.setProperty('--bar',S.bar/100);
+    $('o-bar').textContent=S.bar; $('o-par').textContent=S.par; $('o-hor').textContent=S.hor;
+    $('o-num').textContent=S.num; $('o-ed').textContent=S.ed;
+    blocks(); front(); back();
+  }
+  function sync(){
+    $('f-title').value=S.title;$('f-num').value=S.num;$('f-ed').value=S.ed;
+    ['olive','violet','paper','ink'].forEach(function(k){$('c-'+k).value=S[k]});
+    $('r-bar').value=S.bar;$('r-par').value=S.par;$('r-hor').value=S.hor;
+  }
+  function bind(id,key,num){
+    $(id).addEventListener('input',function(e){S[key]=num?parseFloat(e.target.value):e.target.value;apply()});
+  }
+  bind('f-title','title');bind('f-num','num');bind('f-ed','ed');
+  bind('c-olive','olive');bind('c-violet','violet');bind('c-paper','paper');bind('c-ink','ink');
+  bind('r-bar','bar',1);bind('r-par','par',1);bind('r-hor','hor',1);
+  $('reset').addEventListener('click',function(){S=Object.assign({},DEF);sync();apply()});
+  // pegado como texto plano en las zonas editables
+  document.addEventListener('paste',function(e){
+    var t=e.target&&e.target.closest&&e.target.closest('[contenteditable]'); if(!t)return;
+    e.preventDefault(); document.execCommand('insertText',false,(e.clipboardData||window.clipboardData).getData('text'));
+  });
+  apply();
+})();
+</script>
