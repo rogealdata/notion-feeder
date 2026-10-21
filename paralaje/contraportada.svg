@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 2100" width="1480" height="2100">
+<rect width="1480" height="2100" fill="#4b2a82"/>
+<rect x="0" y="40" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="140" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="240" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="340" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="440" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1580" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1680" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1780" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1880" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1980" width="1480" height="54" fill="#0a0a0a"/>
+<rect y="520" width="1480" height="1060" fill="#25104a"/>
+<g font-family="Inter" fill="#f4f1dc">
+ <text x="120" y="690" font-family="Inter Display, Inter" font-weight="900" font-size="64" letter-spacing="4" fill="#d3d58a">PARALAJE</text>
+ <text x="120" y="790" font-size="40" font-weight="400" font-style="italic">Efecto de cambio de posición aparente de un objeto</text>
+ <text x="120" y="842" font-size="40" font-weight="400" font-style="italic">cuando se observa desde dos puntos de vista distintos.</text>
+ <text x="120" y="960" font-size="36" font-weight="300">Una revista que lucha contra el lugar común.</text>
+ <text x="120" y="1010" font-size="36" font-weight="300">Hecha lejos de casa, en hispanohablante, en París.</text>
+ <text x="120" y="1160" font-size="30" font-weight="800" letter-spacing="8" fill="#d3d58a">DOS EDICIONES · NOCHE Y DÍA</text>
+ <text x="120" y="1250" font-family="Inter Display, Inter" font-size="54" font-weight="900" letter-spacing="3">CUERPO · RITMO · CALLE</text>
+ <text x="120" y="1320" font-family="Inter Display, Inter" font-size="54" font-weight="900" letter-spacing="3">VÉRTIGO · PUNTO FINAL</text>
+ <text x="120" y="1440" font-size="32" font-weight="400">Crónica · Poesía · Ficción · Ensayo · Foto</text>
+ <text x="120" y="1500" font-size="28" font-weight="300">Máx. 3 000 caracteres con espacios. Solo en español.</text>
+</g>
+<g font-family="Inter" fill="#f4f1dc">
+ <rect x="120" y="1650" width="1240" height="3" fill="#8c9238" opacity="0"/>
+</g>
+<rect x="120" y="1675" width="1240" height="190" fill="#0a0a0a"/>
+<g font-family="Inter" fill="#f4f1dc" text-anchor="start">
+ <text x="150" y="1740" font-size="26" font-weight="800" letter-spacing="6" fill="#d3d58a">CONVOCATORIA · CIERRE 31.10.2026 · 23H PARÍS</text>
+ <text x="150" y="1800" font-size="44" font-weight="800">redaccion.paralaje@gmail.com</text>
+ <text x="150" y="1844" font-size="24" font-weight="300">Sofía · Marea · Rogelio</text>
+</g>
+</svg>

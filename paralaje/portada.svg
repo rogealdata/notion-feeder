@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 2100" width="1480" height="2100">
+<defs>
+ <pattern id="cob" width="90" height="60" patternUnits="userSpaceOnUse">
+  <rect width="90" height="60" fill="#8c9238"/>
+  <rect x="3" y="3" width="40" height="26" rx="9" fill="#6d7329"/><rect x="48" y="3" width="39" height="26" rx="9" fill="#6d7329"/>
+  <rect x="-20" y="33" width="40" height="24" rx="9" fill="#6d7329"/><rect x="25" y="33" width="40" height="24" rx="9" fill="#6d7329"/><rect x="70" y="33" width="40" height="24" rx="9" fill="#6d7329"/>
+ </pattern>
+ <radialGradient id="lamp" cx="0.15" cy="0.08" r="0.75"><stop offset="0" stop-color="#d3d58a"/><stop offset="1" stop-color="#8c9238"/></radialGradient>
+ <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d3d58a"/><stop offset="1" stop-color="#8c9238"/></linearGradient>
+<g id="fig">
+ <path d="M606 318 Q604 196 738 190 Q870 196 872 318 Z"/>
+ <ellipse cx="738" cy="322" rx="160" ry="24"/>
+ <path d="M662 340 L850 340 L852 450 Q836 520 772 530 L704 524 Q662 496 660 440 L628 418 L640 398 L662 404 Z"/>
+ <path d="M608 548 Q738 512 868 548 Q936 640 956 930 L992 1300 L492 1300 L526 930 Q542 640 608 548 Z"/>
+ <path d="M628 1290 L726 1290 L704 1860 L618 1860 Z"/>
+ <path d="M770 1290 L868 1290 L896 1850 L810 1860 Z"/>
+ <path d="M600 1850 L720 1850 Q730 1930 690 1938 L560 1938 Q548 1890 600 1850 Z"/>
+ <path d="M800 1848 L908 1848 Q990 1900 964 1936 L810 1936 Q790 1900 800 1848 Z"/>
+</g>
+</defs>
+<rect width="1480" height="2100" fill="url(#lamp)"/>
+<rect y="1350" width="1480" height="750" fill="url(#cob)"/>
+<!-- farola -->
+<g fill="#25104a"><rect x="196" y="320" width="22" height="1040"/><circle cx="207" cy="300" r="34" fill="#f4f1dc"/></g>
+<rect x="0" y="40" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="140" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="240" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="340" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="440" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="540" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="640" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="740" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="840" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="940" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1040" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1140" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1240" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1340" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1440" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1540" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1640" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1740" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1840" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="1940" width="1480" height="54" fill="#0a0a0a"/>
+<rect x="0" y="2040" width="1480" height="20" fill="#0a0a0a"/>
+<!-- sombra larga: paralaje, dos puntos de vista -->
+<g fill="#8c9238" style="mix-blend-mode:multiply" transform="translate(-46,0)" opacity="0.95"><use href="#fig"/></g>
+<g fill="#4b2a82"><use href="#fig"/></g>
+
+
+<text x="740" y="705" text-anchor="middle" font-family="Inter Display, Inter" font-weight="900" font-size="230" textLength="520" lengthAdjust="spacingAndGlyphs" fill="#f4f1dc" letter-spacing="-8">PA</text>
+<text x="740" y="930" text-anchor="middle" font-family="Inter Display, Inter" font-weight="900" font-size="230" textLength="470" lengthAdjust="spacingAndGlyphs" fill="#f4f1dc" letter-spacing="-8">RA</text>
+<text x="740" y="1155" text-anchor="middle" font-family="Inter Display, Inter" font-weight="900" font-size="230" textLength="440" lengthAdjust="spacingAndGlyphs" fill="#f4f1dc" letter-spacing="-8">LA</text>
+<text x="740" y="1380" text-anchor="middle" font-family="Inter Display, Inter" font-weight="900" font-size="230" textLength="470" lengthAdjust="spacingAndGlyphs" fill="#f4f1dc" letter-spacing="-8">JE</text>
+
+<g font-family="Inter" fill="#f4f1dc">
+  <text x="78" y="130" font-size="30" font-weight="800" letter-spacing="6" fill="#0a0a0a">01</text>
+</g>
+<rect x="1010" y="1990" width="392" height="62" fill="#0a0a0a"/>
+<text x="1206" y="2033" text-anchor="middle" font-family="Inter Display, Inter" font-weight="900" font-size="38" letter-spacing="9" fill="#f4f1dc">SOMBRA</text>
+<rect x="78" y="1990" width="880" height="62" fill="#0a0a0a"/>
+<text x="518" y="2033" text-anchor="middle" font-family="Inter" font-weight="800" font-size="30" letter-spacing="7" fill="#f4f1dc">REVISTA HISPANOHABLANTE · PARÍS</text>
+</svg>
